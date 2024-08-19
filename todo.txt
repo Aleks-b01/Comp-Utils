@@ -1,8 +1,4 @@
-For some reason bpa and wpa in nan, so fix that
-big times.toFixed(2)
-
-Implement target avg
-
+fix target avg not working with big numbers
 
 algtrainer html needs to be fixed
 helper html needs to be built
