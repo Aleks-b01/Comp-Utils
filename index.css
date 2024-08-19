@@ -1,0 +1,125 @@
+html, body {
+	margin: 0;
+	display: inline;
+	height: 100%;
+	width: 100%;
+}
+
+/* Everything until the next double comment is related to the menus/ui (essentially divs), single comments reffer to which menu it is */
+/* Main menu */
+#menu {
+	display: flex;
+	height: 100%;
+	width: 30%;
+	flex-direction: column;
+	position: absolute;
+	left: 50%;
+	transform: translate(-50%,0%);
+}
+
+/* Average calculator div */
+#calcdiv {
+	display: none; /* Normally flex */
+	height: 100%;
+	width: 100%;
+}
+
+#target {
+	visibility: hidden;
+}
+
+/* Both divs are from th calculator */
+#timesdiv {
+	height: 100%;
+	width: 50%;
+}
+
+#avgdiv {
+	height: 100%;
+	width: 50%;
+}
+
+/* The text in the calculator that takes you to the settings to change your target average */
+#settarget {
+	position: absolute;
+	bottom: 20px;
+	right: 20px;
+	z-index: 1;
+}
+
+/* Scramble generator div */
+#scramblediv {
+	display: none; /* Normally flex */
+	height: 100%;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+}
+
+/* Event selector button */
+#eventselector {
+	height: 30px; /* Height and width will most likely be changed */
+	width: 30px;
+	position: absolute;
+	top: 5px;
+	left: 5px;
+}
+/* Div for the scramble text */
+#scrambletextdiv {
+	display: flex;
+	height: 100%;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+}
+
+/* Menu to select the events in the scramble gen */
+#eventselectormenudiv {
+	display: none; /* Normally block */
+	height: 50%;
+	width: 25%; /* This will prob be changed */
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+}
+
+/* Helper tools div (in the works) */
+#helpersdiv {
+	display: none;
+	height: 100%;
+	width: 100%;
+}
+
+/* Settins menu (in the works, will prob be finished last since i need to know all of the settings for each mode) */
+#settingsmenu {
+	display: none;
+	height: 100%;
+	width: 100%;
+}
+
+/* The button that takes you back to the main menu */
+.menubutton {
+	visibility: hidden;
+	position: absolute;
+	height: 50px;
+	width: 50px;
+	top: 5px;
+	right: 5px;
+}
+
+#menubutton {
+	visibility: hidden;
+	position: absolute;
+	height: 50px;
+	width: 50px;
+	top: 5px;
+	right: 5px;
+}
+
+/* Same as top one, but takes you back to Avg Calculator instead of the menu */
+#targetavgbutton {
+	visibility: hidden;
+}
+/* Something will go here next */
+/* */
