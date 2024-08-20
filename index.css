@@ -47,6 +47,26 @@ html, body {
 	z-index: 1;
 }
 
+/* The format dropdown menu in settings */
+#format {
+	display: flex;
+	flex-direction: column;
+	height: 50px;
+	width: 100px;
+}
+
+#formatop {
+	display: none;
+}
+
+#formatop1 {
+	width: 100px;
+}
+
+#formatop2 {
+	width: 100px;
+}
+
 /* Scramble generator div */
 #scramblediv {
 	display: none; /* Normally flex */

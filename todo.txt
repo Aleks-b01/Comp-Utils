@@ -1,4 +1,6 @@
-fix target avg not working with big numbers
+implement +2, dnf
+make reset button
+
 
 algtrainer html needs to be fixed
 helper html needs to be built
