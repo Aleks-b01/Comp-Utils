@@ -14,6 +14,7 @@ const wcalive = document.getElementById('wcalive');
 const settings = document.getElementById('settings');
 const settingsmenu = document.getElementById('settingsmenu');
 const menubutton = document.getElementById('menubutton');
+const menubuttonsettings = document.getElementById('menubuttonsettings');
 
 calc.onclick = function() {
 	menu.style.display = 'none';
@@ -30,7 +31,7 @@ scramble.onclick = function() {
 helpers.onclick = function() {
 	menu.style.display = 'none';
 	helpersdiv.style.display = 'inline'; // will def change this when I'll actually build helpersdiv
-	menubutton.style.visibility = 'visible';
+	menubuttonsettings.style.visibility = 'visible';
 };
 
 competitiongroups.onclick = function() {
@@ -44,15 +45,18 @@ wcalive.onclick = function() {
 settings.onclick = function() {
 	menu.style.display = 'none';
 	settingsmenu.style.display = 'inline'; // will also change this when i build the settings
-	menubutton.style.visibility = 'visible';
+	menubuttonsettings.style.visibility = 'visible';
 };
 
 menubutton.onclick = function() {
 	menu.style.display = 'flex';
 	calcdiv.style.display = 'none';
-	scramblediv.style.display = 'none';
-	helpersdiv.style.display = 'none';
-	settingsmenu.style.display = 'none';
 	menubutton.style.visibility = 'hidden';
+};
+
+menubuttonsettings.onclick = function() {
+	menu.style.display = 'flex';
+	settingsmenu.style.display = 'none';
+	menubuttonsettings.style.visibility = 'hidden';
 };
 });

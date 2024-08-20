@@ -19,9 +19,14 @@ const calcdiv = document.getElementById('calcdiv');
 const menubutton = document.getElementById('menubutton');
 const targetavgbutton = document.getElementById('targetavgbutton');
 const currenttarget = document.getElementById('currenttarget');
+const formatsh = document.getElementById('formatsh');
+const formatop = document.getElementById('formatop');
+const formatop1 = document.getElementById('formatop1');
+const formatop2 = document.getElementById('formatop2');
 
 let time = [];
 let timebig = [];
+let timepenalty = [1, 1, 1, 1, 1]; // 0 = ok, 1 = +2, 2 = dnf
 let timebigtemp = 0;
 let bpax = 0;
 let wpax = 0;
@@ -47,6 +52,9 @@ let targetavgstring = '';
 let targetchuj = 0;
 let targetxtime = 0;
 let avgxbig = 0;
+let bpaxtime = 0;
+let wpaxtime = 0;
+let format = 1; // 1 = ao5, 2 = mo3
 let bestex = 0;
 let worstex = 0; // A monument to the total failure when I for some reason thought that after there's a new best time, that you have to check wether or not it's the new worst time and vice versa
 
@@ -58,6 +66,15 @@ function handleShortcut(event) {
 	} else if (event.key === "Enter" && document.activeElement === targetin) {
 		event.preventDefault();
 		processTargetAVG();
+	} else if (event.ctrlKey && event.key === "1" && calcdiv.style.display === 'flex') {
+		event.preventDefault();
+		pickFormat1();
+	} else if (event.ctrlKey && event.key === "2" && calcdiv.style.display === 'flex') {
+		event.preventDefault();
+		pickFormat2();
+	} else if (event.ctrlKey && event.key === "3" && calcdiv.style.display === 'flex') {
+		event.preventDefault();
+		pickFormat3();
 	}
 };
 
@@ -70,7 +87,7 @@ function processTime() {
 		timecount += 1;
 		time.push(Number(timeconvert));
 		timebig.push(zero);
-		drawTime();
+		pickFormat();
 	} else if (timetemp >= 10000) {
 		let timeconvert = (timetemp / 100).toFixed(2);
 		timecount += 1;
@@ -88,10 +105,20 @@ function processTimeBig() {
 	}
 	timebig.push(timebigcount);
 	time.push(Number(timebigtemp));
-	drawTime();
+	pickFormat();
 };
 
-// Displays time
+// Chooses the correct format
+function pickFormat() {
+	if (format === 1) {
+		drawTime();
+	} else if (format === 2) {
+		drawTimeM();
+	}
+};
+
+// Everything until the next double comment are funtions for ao5
+// Displays time, and for big times it converts them to seconds
 function drawTime() {
 	if (timecount == 0 && timebig[0] == 0) {
 		time1.innerText = '1.  ' + time[0].toFixed(2);
@@ -143,7 +170,7 @@ function drawTime() {
 		timebig5 = timebig[4] + ':' + time[4].toFixed(2);
 		let timebigminutes = timebig[4] * 60;
 		let timebigseconds = time[4];
-		time[4] = timebigminutes = timebigseconds;
+		time[4] = timebigminutes + timebigseconds;
 		processBestWorst();
 	}
 };
@@ -232,6 +259,9 @@ function processBPA() {
 			bpaxbig += 1;
 			bpax -= 60;
 		}
+		let bpaminutes = bpaxbig * 60;
+		let bpaseconds = bpax;
+		bpaxtime = bpaminutes + bpaseconds;
 		drawBPA();
 	} else {
 		processAVG();
@@ -258,6 +288,9 @@ function processWPA() {
 			wpaxbig += 1;
 			wpax -= 60;
 		}
+		let wpaminutes = wpaxbig * 60;
+		let wpaseconds = wpax;
+		wpaxtime = wpaminutes + wpaseconds;
 		drawWPA();
 	}
 };
@@ -321,26 +354,27 @@ function drawTargetAVG() {
 // Processes the target time
 function processTarget() {
 	if (timecount == 3) {
-		let chujwiejakitemp = (targetavg * 3) - time[0] - time[1] - time[2] - time[3] + bestx + worstx;
-		targetxtime = chujwiejakitemp
-		while (chujwiejakitemp >= 60) {
+		targetx = (targetavg * 3) - time[0] - time[1] - time[2] - time[3] + bestx + worstx;
+		while (targetx >= 60) {
 			targetxbig += 1;
-			chujwiejakitemp -= 60;
+			targetx -= 60;
 		}
-		targetx = chujwiejakitemp;
+		let targetxminutes = targetxbig * 60;
+		let targetxseconds = targetx;
+		targetxtime = targetxminutes + targetxseconds;
 		drawTarget();
 	}
 };
 
 // Displays the target time
 function drawTarget() {
-	if (targetxbig == 0 && targetx > bestx && targetx < worstx) {
+	if (targetxbig == 0 && targetxtime > bestx && targetxtime < worstx) {
 		target.innerText = 'Target:  ' + targetx.toFixed(2);
-	} else if (targetxbig > 0 && targetx > bestx && targetx < worstx) {
+	} else if (targetxbig > 0 && targetxtime > bestx && targetxtime < worstx) {
 		target.innerText = 'Target:  ' + targetxbig + ':' + targetx.toFixed(2);
-	} else if (targetxtime < bestx && targetxtime < worstx) {
+	} else if (targetavg < bpaxtime) {
 		target.innerText = 'Target:  Not Possible';
-	} else if (targetxtime > worstx && targetxtime > bestx) {
+	} else if (targetavg > wpaxtime) {
 		target.innerText = 'Target:  Guaranteed';
 	}
 };
@@ -365,5 +399,196 @@ function drawAVG() {
 	} else if (avgxbig > 0) {
 		avg.innerText = 'Average:  ' + avgxbig + ':' + avgx.toFixed(2);
 	}
+};
+
+// Here everything is related to mo3
+// Displays time
+function drawTimeM() {
+	if (timecount == 0 && timebig[0] == 0) {
+		time1.innerText = '1.  ' + time[0].toFixed(2);
+		best.innerText = 'Best:  ' + time[0].toFixed(2);
+		bestx = time[0];
+	} else if (timecount == 0 && timebig[0] > 0) {
+		time1.innerText = '1.  ' + timebig[0] + ':' + time[0].toFixed(2);
+		best.innerText = 'Best:  ' + timebig[0] + ':' + time[0].toFixed(2);
+		timebig1 = timebig[0] + ':' + time[0].toFixed(2);
+		let timebigminutes = timebig[0] * 60;
+		let timebigseconds = time[0];
+		time[0] = timebigminutes + timebigseconds;
+		bestx = timebigminutes + timebigseconds;
+	} else if (timecount == 1 && timebig[1] == 0) {
+		time2.innerText = '2.  ' + time[1].toFixed(2);
+		processBestWorstM();
+	} else if (timecount == 1 && timebig[1] > 0) {
+		time2.innerText = '2.  ' + timebig[1] + ':' + time[1].toFixed(2);
+		timebig2 = timebig[1] + ':' + time[1].toFixed(2);
+		let timebigminutes = timebig[1] * 60;
+		let timebigseconds = time[1];
+		time[1] = timebigminutes + timebigseconds;
+		processBestWorstM();
+	} else if (timecount == 2 && timebig[2] == 0) {
+		time3.innerText = '3.  ' + time[2].toFixed(2);
+		processBestWorstM();
+	} else if (timecount == 2 && timebig[2] > 0) {
+		time3.innerText = '3.  ' + timebig[2] + ':' + time[2].toFixed(2);
+		timebig3 = timebig[2] + ':' + time[2].toFixed(2);
+		let timebigminutes = timebig[2] * 60;
+		let timebigseconds = time[2];
+		time[2] = timebigminutes + timebigseconds;
+		processBestWorstM();
+	}
+};
+
+// Processes best and worst times
+function processBestWorstM() {
+	if (timecount == 1 && time[1] < bestx && timebig[1] == 0 && timebig[0] == 0) {
+		worstx = bestx;
+		bestx = time[1];
+		best.innerText = 'Best:  ' + time[1].toFixed(2);
+		worst.innerText = 'Worst:  ' + worstx.toFixed(2);
+	} else if (timecount == 1 && time[1] < bestx && timebig[1] == 0 && timebig[0] > 0) {
+		worstx = bestx;
+		bestx = time[1];
+		best.innerText = 'Best:  ' + time[1].toFixed(2);
+		worst.innerText = 'Worst:  ' + timebig1;
+	} else if (timecount == 1 && time[1] < bestx && timebig[1] > 0 && timebig[0] > 0) {
+		worstx = bestx;
+		bestx = time[1];
+		best.innerText = 'Best:  ' + timebig2;
+		worst.innerText = 'Worst:  ' + timebig1;
+	} else if (timecount == 1 && time[1] > worstx && timebig[1] == 0) {
+		worstx = time[1];
+		worst.innerText = 'Worst:  ' + time[1].toFixed(2);
+	} else if (timecount == 1 && time[1] > worstx && timebig[1] > 0) {
+		worstx = time[1];
+		worst.innerText = 'Worst:  ' + timebig2;
+	} else if (timecount == 2 && time[2] < bestx && timebig[2] == 0) {
+		bestx = time[2];
+		best.innerText = 'Best:  ' + time[2];
+	} else if (timecount == 2 && time[2] < bestx && timebig[2] > 0) {
+		bestx = time[2];
+		best.innerText = 'Best:  ' + timebig3;
+	} else if (timecount == 2 && time[2] > worstx && timebig[2] == 0) {
+		worstx = time[2];
+		worst.innerText = 'Worst:  ' + time[2];
+	} else if (timecount == 2 && time[2] > worstx && timebig[2] > 0) {
+		worstx = time[2];
+		worst.innerText = 'Worst:  ' + timebig3;
+	}
+	processTargetM();
+};
+
+// Processes the target time
+function processTargetM() {
+	if (timecount == 1) {
+		targetx = (targetavg * 3) - time[0] - time[1];
+		while (targetx >= 60) {
+			targetxbig += 1;
+			targetx -= 60;
+		}
+		let targetxminutes = targetxbig * 60;
+		let targetxseconds = targetx;
+		targetxtime = targetxminutes + targetxseconds;
+	}
+	drawTargetM();
+};
+
+// Displays the target time
+function drawTargetM() {
+	if (targetxbig == 0 && targetxtime > 0) {
+		target.innerText = 'Target:  ' + targetx.toFixed(2);
+	} else if (targetxbig > 0 && targetxtime > 0) {
+		target.innerText = 'Target:  ' + targetxbig + ':' + targetx.toFixed(2);
+	} else if (targetxtime > 0) {
+		target.innerText = 'Target:  Not Possible';
+	}
+	processMean();
+};
+
+// Processes the mean
+function processMean() {
+	if (timecount == 2) {
+		let avgxtemp = time[0] + time[1] + time[2];
+		avgx = avgxtemp / 3;
+		while (avgx >= 60) {
+			avgxbig += 1;
+			avgx -= 60;
+		}
+		drawMean();
+	}
+};
+
+// Displays the mean
+function drawMean() {
+	if (avgxbig == 0) {
+		avg.innerText = 'Mean:  ' + avgx.toFixed(2);
+	} else if (avgxbig > 0) {
+		avg.innerText = 'Mean:  ' + avgxbig + ':' + avgx.toFixed(2);
+	}
+};
+
+// The setting that lets you change the format
+formatsh.onclick = function() {
+	formatop.style.display = 'inline';
+};
+
+formatop1.onclick = function() {
+	format = 1;
+	formatsh.innerText = 'ao5';
+	formatop.style.display = 'none';
+	time4.style.visibility = 'visible';
+	time5.style.visibility = 'visible';
+	bpa.style.visibility = 'visible';
+	wpa.style.visibility = 'visible';
+	avg.innerText = 'Average:  ';
+};
+
+formatop2.onclick = function() {
+	format = 2;
+	formatsh.innerText = 'mo3';
+	formatop.style.display = 'none';
+	time4.style.visibility = 'hidden';
+	time5.style.visibility = 'hidden';
+	bpa.style.visibility = 'hidden';
+	wpa.style.visibility = 'hidden';
+	avg.innerText = 'Mean:  ';
+};
+
+// Chooses the correct format
+function pickFormat1() {
+	if (format === 1) {
+		timeOK();
+	} else if (format === 2) {
+		timeOKM();
+	}
+};
+
+function pickFormat2() {
+	if (format === 1) {
+		timePlus2();
+	} else if (format === 2) {
+		timePlus2M();
+	}
+};
+
+function pickFormat3() {
+	if (format === 1) {
+		timeDNF();
+	} else if (format === 2) {
+		timeDNFM();
+	}
+};
+
+// Applies +2 or dnf to solve
+function timeOK() {
+	alert("Ok");
+};
+
+function timePlus2() {
+	alert("+2");
+};
+
+function timeDNF() {
+	alert("DNF");
 };
 });
