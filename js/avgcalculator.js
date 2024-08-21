@@ -184,32 +184,36 @@ function drawTime() {
 
 // Processes the best and worst times but exclusively for the second solve
 function processBestWorstTwo() {
-	if (time[1] < bestx && timebig[1] == 0 && timebig[0] == 0) {
+	if (time[1] < bestx && timebig[1] == 0 && timebig[0] == 0 && time[1] != Infinity) {
 		worstx = bestx;
 		bestx = time[1];
 		bestplace = 1;
 		best.innerText = 'Best:  ' + time[1].toFixed(2);
 		worst.innerText = 'Worst:  ' + worstx.toFixed(2);
-	} else if (time[1] < bestx && timebig[1] == 0 && timebig[0] > 0) {
+	} else if (time[1] < bestx && timebig[1] == 0 && timebig[0] > 0 && time[1] != Infinity) {
 		worstx = bestx;
 		bestx = time[1];
 		bestplace = 1;
 		best.innerText = 'Best:  ' + time[1].toFixed(2);
 		worst.innerText = 'Worst:  ' + timebig1;
-	} else if (time[1] < bestx && timebig[1] > 0 && timebig[0] > 0) {
+	} else if (time[1] < bestx && timebig[1] > 0 && timebig[0] > 0 && time[1] != Infinity) {
 		worstx = bestx;
 		bestx = time[1];
 		bestplace = 1;
 		best.innerText = 'Best:  ' + timebig2;
 		worst.innerText = 'Worst:  ' + timebig1;
-	} else if (time[1] > worstx && timebig[1] == 0) {
+	} else if (time[1] > worstx && timebig[1] == 0 && time[1] != Infinity) {
 		worstx = time[1];
 		worstplace = 1;
 		worst.innerText = 'Worst:  ' + time[1].toFixed(2);
-	} else if (time[1] > worstx && timebig[1] > 0) {
+	} else if (time[1] > worstx && timebig[1] > 0 && time[1] != Infinity) {
 		worstx = time[1];
 		worstplace = 1;
 		worst.innerText = 'Worst:  ' + timebig2;
+	} else if (time[1] == Infinity && time[0] != Infinity) {
+		worstx = Infinity;
+		worst.innerText = 'Worst:  DNF';
+		worstplace = 1;
 	}
 };
 // Processes the best and worst times
@@ -219,7 +223,7 @@ function processBestWorst() {
 		bestplace = timecount;
 		best.innerText = 'Best:  ' + time[timecount].toFixed(2);
 		processBPA();
-	} else if (time[timecount] > worstx && timebig[timecount] == 0) {
+	} else if (time[timecount] > worstx && timebig[timecount] == 0 && time[timecount] != Infinity) {
 		worstx = time[timecount];
 		worstplace = timecount;
 		worst.innerText = 'Worst:  ' + time[timecount].toFixed(2);
@@ -585,7 +589,7 @@ function pickFormat1() {
 
 function pickFormat2() {
 	if (format === 1) {
-		checlPlus2();
+		checkPlus2();
 	} else if (format === 2) {
 		checkPlus2M();
 	}
@@ -626,27 +630,128 @@ function checkDNF() {
 
 // Applies +2 or dnf to solve
 function timeOKPlus2() {
-
+	if (timecount == 0 && timebig[0] == 0) {
+		time[0] -= 2;
+		bestx -= 2;
+		timepenalty[0] = 1;
+		time1.innerText = '1.  ' + time[0];
+		best.innerText = 'Best:  ' + bestx;
+	} else if (timecount == 1 && timebig[1] == 0) {
+		time[1] -= 2;
+		bestx -= 2;
+		timpenalty[1] = 1;
+		time2.innerText = '2.  ' + time[1];
+		processBestWorstTwo();
+	} else if (timebig[timecount] > 0) {
+		timeOKPlus2Big();
+	} else {
+		time[timecount] -= 2;
+		timepenalty[timecount] = 1;
+		drawTime();
+	}
 };
 
 function timeOKDNF() {
-
+	if (timecount == 0 && timebig[0] == 0) {
+		time[0] = (Number(timednf[0]));
+		bestx = (Number(timednf[0]));
+		timepenalty[0] = 1;
+		time1.innerText = '1.  ' + time[0];
+		best.innerText = 'Best:  ' + betx;
+	} else if (timecount == 1 && timebig[1] == 0) {
+		time[1] = (Number(timednf[1]));
+		timepenalty[1] = 1;
+		time2.innerText = '2.  ' + time[1]
+		processBestWorstTwo();
+	} else if (timebig[timecount] > 0) {
+		timeOKDNFBig();
+	} else {
+		time[timcount] = (Number(timednf[timecount]));
+		timepenalty[timecount] = 1;
+		drawTime();
+	}
 };
 
 function timePlus2OK() {
-	if (timecount == 0)
+	if (timecount == 0 && timebig[0] == 0) {
+		time[0] += 2;
+		bestx += 2;
+		timepenalty[0] = 2;
+		time1.innerText = '1.  ' + time[0];
+		best.innerText = 'Best:  ' + bestx;
+	} else if (timecount == 1 && timebig[1] == 0) {
+		time[1] += 2;
+		timepenalty[1] = 2;
+		time2.innerText = '2.  ' + time[1];
+		processBestWorstTwo();
+	} else if (timebig[timecount] > 0) {
+		timePlus2OKBig();
+	} else {
+		time[timecount] += 2;
+		timepenalty[timecount] = 2;
+		drawTime();
+	}
 };
 
 function timePlus2DNF() {
-
+	if (timecount == 0 && timebig[0] == 0) {
+		time[0] = (Number(timednf[0])) + 2;
+		bestx = time[0];
+		timepenalty[0] = 2;
+		time1.innerText = '1.  ' + time[0];
+		bestx.innerText = 'Best:  ' + bestx;
+	} else if (timecount == 1 && timebig[1] == 0) {
+		time[1] = (Number(timednf[1])) + 2;
+		timepenalty[1] = 2;
+		time2.innerText = '2.  ' + time[1];
+		processBestWorstTwo();
+	} else if (timebig[timecount] > 0) {
+		timePlus2DNFBig();
+	} else {
+		time[timecount] = (Number(timednf[timecount])) + 2;
+		timepenalty[timecount] = 2;
+		drawTime();
+	}
 };
 
 function timeDNFOK() {
-
+	if (timecount == 0 && timebig[0] == 0) {
+		timednf[0] = (Number(time[0]));
+		time[0] = Infinity;
+		timepenalty[0] = 3;
+		time1.innerText = '1.  DNF';
+		bestx.innerText = 'Best:  DNF';
+	} else if (timecount == 1 && timebig[1] == 0) {
+		timednf[1] = (Number(time[1]));
+		time[1] = Infinity;
+		timepenalty[1] = 3;
+		worstx.innerText = 'Worst:  DNF'
+	} else if (timebig[timecount] > 0) {
+		timeDNFOKBig();
+	} else {
+		timednf[timecount] = (Number(time[timecount]));
+		timepenalty[timecount] = 3;
+	}
 };
 
 function timeDNFPlus2() {
-
+	if (timecount == 0 && timebig[0] == 0) {
+		timednf[0] = (Number(time[0])) - 2;
+		time[0] = Infinity;
+		timepenalty[0] = 3;
+		time1.innerText = '1.  DNF';
+		bestx.innerText = 'Best:  DNF';
+	} else if (timecount == 1 && timebig[1] == 0) {
+		timednf[1] = (Number(time[1])) - 2;
+		time[1] = Infinity;
+		timepenalty[1] = 3;
+		worstx.innerText = 'Worst:  DNF'
+	} else if (timebig[timecount] > 0) {
+		timeDNFOKBig();
+	} else {
+		timednf[timecount] = (Number(time[timecount])) - 2;
+		timepenalty[timecount] = 3;
+	}
 };
 
 // All the same as above but for mo3
@@ -663,7 +768,7 @@ function checkPlus2M() {
 		timePlus2OKM();
 	} else if (timepenalty[timecount] == 3) {
 		timePlus2DNFM();
-	{
+	}
 };
 
 function checkDNFM() {
