@@ -1,4 +1,4 @@
-implement +2, dnf
+implement +2, dnf (handle dnfs in processbestworst and like bpa and so on, and copy paste for mo3)
 make reset button
 
 
