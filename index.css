@@ -28,7 +28,7 @@ html, body {
 	visibility: hidden;
 }
 
-/* Both divs are from th calculator */
+/* Both divs are from the calculator */
 #timesdiv {
 	height: 100%;
 	width: 50%;
@@ -110,6 +110,34 @@ html, body {
 	height: 100%;
 	width: 100%;
 }
+
+#helpermenubutton {
+	visibility: hidden;
+   position: absolute;
+   height: 50px;
+   width: 50px;
+   top: 5px;
+   right: 5px;
+}
+
+#helperscubepick {
+	visibility: hidden;
+	position: absolute;
+	height: 30px;
+	width: 50px;
+	top: 5px;
+	left: 5px;
+}
+
+#helpersselect {
+	visibility: hidden;
+	position: absolute;
+	height: 30px;
+	width: 50px;
+	top: 40px;
+	left: 5px;
+}
+
 
 /* Settins menu (in the works, will prob be finished last since i need to know all of the settings for each mode) */
 #settingsmenu {
