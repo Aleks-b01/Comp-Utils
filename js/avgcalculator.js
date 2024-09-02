@@ -124,6 +124,14 @@ function pickFormat() {
 	}
 };
 
+function isDNF() {
+	if (Number(timecount[0] + timecount[1] + timecount[2] + timecount[3] + timecount[4]) >= Infinity) {
+		return true;
+	} else {
+		return false;
+	}
+};
+
 // Everything until the next double comment are funtions for ao5
 // Displays time, and for big times it converts them to seconds
 function drawTime() {
@@ -182,6 +190,10 @@ function drawTime() {
 	}
 };
 
+function drawDNF() {
+	
+};
+
 // Processes the best and worst times but exclusively for the second solve
 function processBestWorstTwo() {
 	if (time[1] < bestx && timebig[1] == 0 && timebig[0] == 0 && time[1] != Infinity) {
@@ -210,10 +222,24 @@ function processBestWorstTwo() {
 		worstx = time[1];
 		worstplace = 1;
 		worst.innerText = 'Worst:  ' + timebig2;
-	} else if (time[1] == Infinity && time[0] != Infinity) {
+	} else if (time[1] == Infinity) {
 		worstx = Infinity;
 		worst.innerText = 'Worst:  DNF';
 		worstplace = 1;
+	} else if (time[0] == Infinity && time[1] != Infinity && timebig[1] == 0) {
+		worstx = Infinity;
+		worst.innerText = 'Worst:  DNF';
+		worstplace = 0;
+		bestx = time[1];
+		best.innerText = 'Best:  ' + bestx;
+		bestplace = 1;
+	} else if (time[0] == Infinity && time[1] != Infinity && timebig[1] == 1) {
+		worstx = Infinity;
+		worst.innerText = 'Worst:  DNF';
+		worstplace = 0;
+		bestx = time[1];
+		best.innerText = 'Best:  ' + timebig2;
+		bestplace = 0;
 	}
 };
 // Processes the best and worst times
@@ -638,7 +664,6 @@ function timeOKPlus2() {
 		best.innerText = 'Best:  ' + bestx;
 	} else if (timecount == 1 && timebig[1] == 0) {
 		time[1] -= 2;
-		bestx -= 2;
 		timpenalty[1] = 1;
 		time2.innerText = '2.  ' + time[1];
 		processBestWorstTwo();
@@ -657,7 +682,7 @@ function timeOKDNF() {
 		bestx = (Number(timednf[0]));
 		timepenalty[0] = 1;
 		time1.innerText = '1.  ' + time[0];
-		best.innerText = 'Best:  ' + betx;
+		best.innerText = 'Best:  ' + bestx;
 	} else if (timecount == 1 && timebig[1] == 0) {
 		time[1] = (Number(timednf[1]));
 		timepenalty[1] = 1;
@@ -725,12 +750,13 @@ function timeDNFOK() {
 		timednf[1] = (Number(time[1]));
 		time[1] = Infinity;
 		timepenalty[1] = 3;
-		worstx.innerText = 'Worst:  DNF'
+		processBestWorstTwo();
 	} else if (timebig[timecount] > 0) {
 		timeDNFOKBig();
 	} else {
 		timednf[timecount] = (Number(time[timecount]));
 		timepenalty[timecount] = 3;
+		drawDNF(); //ch
 	}
 };
 
@@ -745,12 +771,13 @@ function timeDNFPlus2() {
 		timednf[1] = (Number(time[1])) - 2;
 		time[1] = Infinity;
 		timepenalty[1] = 3;
-		worstx.innerText = 'Worst:  DNF'
+		processBestWorstTwo();
 	} else if (timebig[timecount] > 0) {
 		timeDNFOKBig();
 	} else {
 		timednf[timecount] = (Number(time[timecount])) - 2;
 		timepenalty[timecount] = 3;
+		drawDNF(); //ch
 	}
 };
 
