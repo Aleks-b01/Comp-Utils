@@ -1,4 +1,4 @@
-// This file is dedicated to only the buttons in the main menu and the ones that take you to the main menu
+// This file is dedicated to only the main menu functionality
 document.addEventListener('DOMContentLoaded', function() {
 
 const menu = document.getElementById('menu');
