@@ -319,7 +319,7 @@ function drawAVG() {
 	}
 };
 
-// Everything with an M at the end is related to mo3
+// Everything that ends with an M is related to mo3
 function drawTimeM() {
 	if (timecount == 0 && timebig[0] == 0) {
 		time1.innerText = '1.  ' + time[0].toFixed(2);
