@@ -40,9 +40,7 @@ let bestx = 0;
 let worstx = 0;
 let targetx = 0;
 let targetxstring = '';
-let targetxavg = 0;
 let targetavg = 0;
-let settargetset = 0;
 let timecount = -1;
 let zero = 0;
 let bpaxbig = 0;
@@ -50,20 +48,10 @@ let wpaxbig = 0;
 let targetxbig = 0;
 let targetavgbig = 0;
 let targetavgstring = '';
-let targetchuj = 0;
-let targetxtime = 0;
 let avgxbig = 0;
 let bestplace = 0;
 let worstplace = 0;
-let bpaxtime = 0;
-let wpaxtime = 0;
-let isnewbest = 0;
-let isnewworst = 0;
-let newbest = 0;
-let newworst = 0;
 let format = 1;
-let bestex = 0;
-let worstex = 0;
 
 // Keybinds
 function handleShortcut(event) {
