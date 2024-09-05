@@ -1,4 +1,4 @@
-rewrite avgcalc
+implement +2 dnf into avg and in every mean function
 make reset button
 
 
