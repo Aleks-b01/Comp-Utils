@@ -460,11 +460,16 @@ function drawTimeDNFM() {
 function processBestM() {
 	bestx = Math.min(...time);
 	bestplace = time.indexOf(bestx);
-	if (bestx < 60) {
+	if (bestx < 60 && timepenalty[bestplace] == 1) {
 		best.innerText = 'Best:  ' + bestx.toFixed(2);
-	} else if (bestx >= 60 && bestx < Infinity) {
+	} else if (bestx >= 60 && bestx < Infinity && timepenalty[bestplace] == 1) {
 		timetemp = bestx - timebig[bestplace] * 60;
 		best.innerText = 'Best:  ' + timebig[bestplace] + ':' + timetemp.toFixed(2);
+	} else if (bestx < 60 && timepenalty[bestplace] == 2) {
+		best.innerText = 'Best:  ' + best..toFixed(2) + '+';
+		} else if (bestx >= 60 && bestx < Infinity && timepenalty[bestplace] == 2) {
+			timetemp = bestx = timebig[bestplace] * 60;
+			best.innerText = 'Best:  ' + timebig[bestplace] + ':' + timetemp.toFixed(2) + '+';
 	} else if (bestx == Infinity) {
 		best.innerText == 'Best:  DNF';
 		worst.innerText == 'Worst:  DNF';
@@ -475,15 +480,19 @@ function processBestM() {
 function processWorstM() {
 	worstx = Math.max(...time);
 	worstplace = time.indexOf(worstx);
-	if (worstx < 60) {
+	if (worstx < 60 && timepenalty[worstplace] == 1) {
 		worst.innerText = 'Worst:  ' + worstx.toFixed(2);
-	} else if (worstx >= 60 && worstx < Infinity) {
+	} else if (worstx >= 60 && worstx < Infinity && timepenalty[worstplace] == 1) {
 		timetemp = worstx - timebig[worstplace] * 60;
 		worst.innerText = 'Worst:  ' + timebig[worstplace] + ':' + timetemp.toFixed(2);
+	} else if (worstx < 60 && timepenalty[worstplace] == 2) {
+		worst.innerText = 'Worst:  ' + worstx.toFixed(2) + '+';
+	} else if (worstx >= 60 && worstx < Infinity && timepenalty[worstplace] == 2) {
+		timetemp = worstx - timebig[worstplace] * 60;
+		worst.innerText = 'Worst:  ' + timebig[worstplace] + ':' + timetemp.toFixed(2) + '+';
 	} else if (worstx == Infinity) {
 		worst.innerText = 'Worst:  DNF';
 	}
-	processTargetM();
 };
 
 function processTargetM() {
