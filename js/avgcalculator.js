@@ -162,44 +162,44 @@ function drawTime() {
 };
 
 function drawTimePlus2() {
-	if (timecount == 0 && timebig[0] == 0 && checkPenalty() == 1) {
+	if (timecount == 0 && timebig[0] == 0 && checkPenalty() == 2) {
 		time1.innerText = '1.  ' + time[0].toFixed(2) + '+';
-	} else if (timecount == 1 && timebig[1] == 0 && checkPenalty() == 1) {
+	} else if (timecount == 1 && timebig[1] == 0 && checkPenalty() == 2) {
 		time2.innerText = '2.  ' + time[1].toFixed(2) + '+';
-	} else if (timecount == 2 && timebig[2] == 0 && checkPenalty() == 1) {
+	} else if (timecount == 2 && timebig[2] == 0 && checkPenalty() == 2) {
 		time3.innerText = '3.  ' + time[2].toFixed(2) + '+';
-	} else if (timecount == 3 && timebig[3] == 0 && checkPenalty() == 1) {
+	} else if (timecount == 3 && timebig[3] == 0 && checkPenalty() == 2) {
 		time4.innerText = '4.  ' + time[3].toFixed(2) + '+';
-	} else if (timecount == 4 && timebig[4] == 0 && checkPenalty() == 1) {
+	} else if (timecount == 4 && timebig[4] == 0 && checkPenalty() == 2) {
 		time5.innerText = '5.  ' + time[4].toFixed(2) + '+';
-	} else if (timecount == 0 && timebig[0] > 0 && checkPenalty() == 1) {
+	} else if (timecount == 0 && timebig[0] > 0 && checkPenalty() == 2) {
 		timetemp = time[0] - (timebig[0] * 60);
 		time1.innerText = '1.  ' + timebig[0] + ':' + timetemp.toFixed(2) + '+';
-	} else if (timecount == 1 && timebig[1] > 0 && checkPenalty() == 1) {
+	} else if (timecount == 1 && timebig[1] > 0 && checkPenalty() == 2) {
 		timetemp = time[1] - (timebig[1] * 60);
 		time2.innerText = '2.  ' + timebig[1] + ':' + timetemp.toFixed(2) + '+';
-	} else if (timecount == 2 && timebig[2] > 0 && checkPenalty() == 1) {
+	} else if (timecount == 2 && timebig[2] > 0 && checkPenalty() == 2) {
 		timetemp = time[2] - (timebig[2] * 60);
 		time3.innerText = '3.  ' + timebig[2] + ':' + timetemp.toFixed(2) + '+';
-	} else if (timecount == 3 && timebig[3] > 0 && checkPenalty() == 1) {
+	} else if (timecount == 3 && timebig[3] > 0 && checkPenalty() == 2) {
 		timetemp = time[3] - (timebig[3] * 60);
 		time4.innerText = '4.  ' + timebig[3] + ':' + timetemp.toFixed(2) + '+';
-	} else if (timecount == 4 && timebig[4] > 0 && checkPenalty() == 1) {
+	} else if (timecount == 4 && timebig[4] > 0 && checkPenalty() == 2) {
 		timetemp = time[4] - (timebig[4] * 60);
 		time5.innerText = '5.  ' + timebig[4] + ':' + timetemp.toFixed(2) + '+';
 	}
 };
 
 function drawTimeDNF() {
-	if (timecount == 0 && timebig[0] == 0 && checkPenalty() == 1) {
+	if (timecount == 0 && checkPenalty() == 3) {
 		time1.innerText = '1.  DNF';
-	} else if (timecount == 1 && timebig[1] == 0 && checkPenalty() == 1) {
+	} else if (timecount == 1 && checkPenalty() == 3) {
 		time2.innerText = '2.  DNF';
-	} else if (timecount == 2 && timebig[2] == 0 && checkPenalty() == 1) {
+	} else if (timecount == 2 && checkPenalty() == 3) {
 		time3.innerText = '3.  DNF';
-	} else if (timecount == 3 && timebig[3] == 0 && checkPenalty() == 1) {
+	} else if (timecount == 3 && checkPenalty() == 3) {
 		time4.innerText = '4.  DNF';
-	} else if (timecount == 4 && timebig[4] == 0 && checkPenalty() == 1) {
+	} else if (timecount == 4 && checkPenalty() == 3) {
 		time5.innerText = '5.  DNF';
 	}
 };
@@ -371,45 +371,90 @@ function drawTarget() {
 	processAVG();
 };
 
+function checkDNFAVG() {
+	if ((time[0] + time[1] + time[2] + time[4] - wortsx - bestx) >= Infinity) {
+		return 1;
+	} else {
+		return 0;
+	}
+};
+
 function processAVG() {
-	if (timecount == 4) {
+	if (timecount == 4 && checkDNFAVG() == 0) {
 		avgx = (time[0] + time[1] + time[2] + time[3] + time[4] - bestx - worstx) / 3;
 		while (avgx >= 60) {
 			avgxbig += 1;
 			avgx -= 60;
+		} else if (checkDNFAVG() == 1) {
+			avgx = Infinity;
 		}
 		drawAVG();
 	}
 };
 
 function drawAVG() {
-	if (avgxbig == 0) {
+	if (timecount == 4 && avgxbig == 0 && avgx != Infinity) {
 		avg.innerText = 'Average:  ' + avgx.toFixed(2);
-	} else if (avgxbig > 0) {
+	} else if (timecount == 4 && avgxbig > 0 && avgx != Infinity) {
 		avg.innerText = 'Average:  ' + avgxbig + ':' + avgx.toFixed(2);
+	} else if (timecount == 4 && avgx == Infinity) {
+		avg.innerText = 'Average:  DNF';
 	}
 };
 
 // Everything that ends with an M is related to mo3
 function drawTimeM() {
-	if (timecount == 0 && timebig[0] == 0) {
+	if (timecount == 0 && timebig[0] == 0 && checkPenalty() == 1) {
 		time1.innerText = '1.  ' + time[0].toFixed(2);
-	} else if (timecount == 1 && timebig [1] == 0) {
+	} else if (timecount == 1 && timebig[1] == 0 && checkPenalty() == 1) {
 		time2.innerText = '2.  ' + time[1].toFixed(2);
-	} else if (timecount == 2 && timebig[2] == 0) {
+	} else if (timecount == 2 && timebig[2] == 0 && checkPenalty() == 1) {
 		time3.innerText = '3.  ' + time[2].toFixed(2);
-	} else if (timecount == 0 && timebig[0] > 0) {
-		timetemp = time[0] - timebig[0] * 60;
-		time1.innerText = '1.  ' + timebig[0] + ':' + timetemp.toFixed(2)
-	} else if (timecount == 1 && timebig[1] > 0) {
+	} else if (timecount == 0 && timebig[0] > 0 && checkPenalty() == 1) {
+		timetemp = time[0] - timebig[0] * 60 + ':' + timetemp.toFixed(2);
+		time1.innerText = '1.  ' + timebig[0] + ':' + timetemp.toFixed(2);
+	} else if (timecount == 1 && timebig[1] > 0 && checkPenalty() == 1) {
 		timetemp = time[1] - timebig[1] * 60;
 		time2.innerText = '2.  ' + timebig[1] + ':' + timetemp.toFixed(2);
-	} else if (timecount == 2 && timebig[2] > 0) {
+	} else if (timecount == 2 && timebig[2] > 0 && checkPenalty() == 1) {
 		timetemp = time[2] - timebig[2] * 60;
 		time3.innerText = '3.  ' + timebig[2] + ':' + timetemp.toFixed(2);
+	} else if (ckeckPenalty == 2) {
+		drawTimePlus2M();
+	} else if (checkPenalty() == 3) {
+		drawTimeDNFM();
 	}
 	processBestM();
 	processWorstM();
+};
+
+function drawTimePlus2M() {
+	if (timecount == 0 && timebig[0] == 0 && checkPenalty() == 2) {
+		time1.innerText = '1.  ' + time[0].toFixed(2) + '+';
+	} else if (timecount == 1 && timebig[1] == 0 && checkPenalty() == 2) {
+		time2.innerText = '2.  ' + time[1].toFixed(2) + '+';
+	} else if (timecount == 2 && timebig[2] == 0 && checkPenalty() == 2) {
+		time3.innerText = '3.  ' + time[2].toFixed(2) + '+';
+	} else if (timecount == 0 && timebig[0] > 0 && checkPenalty() == 2) {
+		timetemp = time[0] - timebig[0] * 60 + ':' = timetemp.toFixed(2) + '+';
+		time1.innerText = '1.  ' + timebig[0] + ':' + timetemp.toFixed(2) + '+';
+	} else if (timecount == 1 && timebig[1] > 0 && checkPenalty() == 2) {
+		timetemp = time[1] - timebig[1] * 60;
+		time2.innerText = '2.  ' + timebig[1] + ':' + timetemp.toFixed(2) + '+';
+	} else if (timecount == 2 && timebig[2] > 0 && checkPenalty() == 2) {
+		timetemp = time[2] - timebig[2] * 60;
+		time3.innerText = '3.  ' + timebig[2] + ':' + timetemp.toFixed(2) + '+';
+	}
+};
+
+function drawTimeDNFM() {
+	if (timecount == 0 && checkPenalty() == 3) {
+		time1.innerText = '1.  DNF';
+	} else if (timecount == 1 && checkPenalty == 3) {
+		time2.innerText = '2.  DNF';
+	} else if (timecount == 2 && checkPEnalty() == 3) {
+		time3.innerText = '3.  DNF';
+	}
 };
 
 function processBestM() {
