@@ -158,7 +158,6 @@ function drawTime() {
 		drawTimeDNF();
 	}
 	processBest();
-	processWorst();
 };
 
 function drawTimePlus2() {
@@ -265,10 +264,10 @@ function processBest() {
 		timetemp = bestx - timebig[bestplace] * 60;
 		best.innerText = 'Best:  ' + timebig[bestplace] + ':' + timetemp.toFixed(2) + '+';
 	} else if (bestx == Infinity) {
-		best.innerText == 'Best:  DNF';
-		worst.innerText == 'Worst:  DNF';
+		best.innerText = 'Best:  DNF';
+		worst.innerText = 'Worst:  DNF';
 	}
-	processBPA();
+	processWorst();
 };
 
 function processWorst() {
@@ -287,23 +286,28 @@ function processWorst() {
 	} else if (worstx == Infinity) {
 		worst.innerText = 'Worst:  DNF';
 	}
+	processBPA();
 };
 
-function checkBPADNF() {
-	if ((time[0] + time[1] + time[2] + time[3] - worstx) >= Infinity) {
-		return 1;
+function checkDNF() {
+	if (timepenalty[worstplace] == 3) {
+		const temptimepenalty = timepenalty.filter((penalty, index) => index !== worstplace);
+   	if (Math.max(...temptimepenalty) == 3) {
+			return 1
+		}
 	} else {
 		return 0;
+	}
 };
 
 function processBPA() {
-	if (timecount == 3 && checkBPADNF() == 0) {
+	if (timecount == 3 && checkDNF() == 0) {
 		bpax = (time[0] + time[1] + time[2] + time[3] - worstx) / 3;
 		while (bpax >= 60) {
 			bpaxbig += 1;
 			bpax -= 60;
 		} 
-	} else if (timecount == 3 && checkBPADNF() == 1) {
+	} else if (timecount == 3 && checkDNF() == 1) {
 		bpax = Infinity;
 	}
 	drawBPA();
@@ -315,7 +319,7 @@ function drawBPA() {
 	} else if (bpaxbig > 0 && timecount == 3 && bpax != Infinity) {
 		bpa.innerText = 'BPA:  ' + bpaxbig + ':' + bpax.toFixed(2);
 	} else if (timecount == 3 && bpax == Infinity) {
-		bpa.innerText = 'BPA:  DMF';
+		bpa.innerText = 'BPA:  DNF';
 	}
 	processWPA();
 };
@@ -329,7 +333,6 @@ function processWPA() {
 		}
 	} else if (timecount == 3 && worstx == Infinity) {
 		wpax = Infinity;
-		}
 	}
 	drawWPA();
 };
@@ -373,22 +376,14 @@ function drawTarget() {
 	processAVG();
 };
 
-function checkDNFAVG() {
-	if ((time[0] + time[1] + time[2] + time[4] - wortsx - bestx) >= Infinity) {
-		return 1;
-	} else {
-		return 0;
-	}
-};
-
 function processAVG() {
-	if (timecount == 4 && checkDNFAVG() == 0) {
+	if (timecount == 4 && checkDNF() == 0) {
 		avgx = (time[0] + time[1] + time[2] + time[3] + time[4] - bestx - worstx) / 3;
 		while (avgx >= 60) {
 			avgxbig += 1;
 			avgx -= 60;
 		}
-	} else if (checkDNFAVG() == 1) {
+	} else if (checkDNF() == 1) {
 		avgx = Infinity;
 	}
 	drawAVG();
@@ -559,9 +554,11 @@ function drawMean() {
 function timeOK() {
 	if (checkPenalty() == 2) {
 		time[timecount] -= 2;
+		timepenalty[timecount] = 1;
 		pickFormat();
 	} else if (checkPenalty() == 3) {
 		time[timecount] = Number(timednf[timecount]);
+		timepenalty[timecount] = 1;
 		pickFormat();
 	}
 };
@@ -569,9 +566,11 @@ function timeOK() {
 function timePlus2() {
 	if (checkPenalty() == 1) {
 		time[timecount] += 2;
+		timepenalty[timecount] = 2;
 		pickFormat();
 	} else if (checkPenalty() == 3) {
-		time[timecount] = timednf[timecount] - 2;
+		time[timecount] = timednf[timecount] + 2;
+		timepenalty[timecount] = 2;
 		pickFormat();
 	}
 };
@@ -580,21 +579,23 @@ function timeDNF() {
 	if (checkPenalty() == 1) {
 		timednf[timecount] = time[timecount];
 		time[timecount] = Infinity;
+		timepenalty[timecount] = 3;
 		pickFormat();
-	} else if (checkPenalty == 2) {
+	} else if (checkPenalty() == 2) {
 		timednf[timecount] = time[timecount] - 2;
 		time[timecount] = Infinity;
+		timepenalty[timecount] = 3;
 		pickFormat();
 	}
 };
 
-// Not sure if it's more efficient this way, but I just felt like doing it like this
+// Not sure if it's more efficient this way, but I just felt like doing it this way
 function checkPenalty() {
-	if (timepenalty[timecount] = 1) {
+	if (timepenalty[timecount] == 1) {
 		return 1;
-	} else if (timepenalty[timecount] = 2) {
+	} else if (timepenalty[timecount] == 2) {
 		return 2;
-	} else if (timepenalty[timecount] = 3) {
+	} else if (timepenalty[timecount] == 3) {
 		return 3;
 	}
 };
