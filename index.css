@@ -5,19 +5,40 @@ html, body {
 	width: 100%;
 }
 
-/* Everything until the next double comment is related to the menus/ui (essentially divs), single comments reffer to which menu it is */
-/* Main menu */
 #menu {
 	display: flex;
-	height: 100%;
+	height: 50%;
 	width: 30%;
-	flex-direction: column;
+	flex-direction: row;
 	position: absolute;
 	left: 50%;
 	transform: translate(-50%,0%);
+	flex-wrap: wrap;
+	justify-content: center;
 }
 
-/* Average calculator div */
+#tag {
+	height: 20%;
+	width: 100%;
+	color: white;
+	font-size: 45px;
+	font-family: Arial;
+}
+
+#calc, #scramble, #algs, #helpers, #competitiongroups, #wcalive {
+	height: 120px;
+	width: 32%;
+	margin: 1px;
+}
+
+#settings {
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	height: 50px;
+	width: 50px;
+}
+
 #calcdiv {
 	display: none; /* Normally flex */
 	height: 100%;
@@ -28,7 +49,6 @@ html, body {
 	visibility: hidden;
 }
 
-/* Both divs are from the calculator */
 #timesdiv {
 	height: 100%;
 	width: 50%;
@@ -39,7 +59,6 @@ html, body {
 	width: 50%;
 }
 
-/* The text in the calculator that takes you to the settings to change your target average */
 #settarget {
 	position: absolute;
 	bottom: 20px;
@@ -47,7 +66,6 @@ html, body {
 	z-index: 1;
 }
 
-/* The format dropdown menu in settings */
 #format {
 	display: flex;
 	flex-direction: column;
@@ -67,7 +85,6 @@ html, body {
 	width: 100px;
 }
 
-/* Scramble generator div */
 #scramblediv {
 	display: none; /* Normally flex */
 	height: 100%;
@@ -76,7 +93,6 @@ html, body {
 	align-items: center;
 }
 
-/* Event selector button */
 #eventselector {
 	height: 30px; /* Height and width will most likely be changed */
 	width: 30px;
@@ -84,7 +100,6 @@ html, body {
 	top: 5px;
 	left: 5px;
 }
-/* Div for the scramble text */
 #scrambletextdiv {
 	display: flex;
 	height: 100%;
@@ -93,7 +108,6 @@ html, body {
 	align-items: center;
 }
 
-/* Menu to select the events in the scramble gen */
 #eventselectormenudiv {
 	display: none; /* Normally block */
 	height: 50%;
@@ -104,7 +118,6 @@ html, body {
 	transform: translate(-50%,-50%);
 }
 
-/* Helper tools div (in the works) */
 #helpersdiv {
 	display: none;
 	height: 100%;
@@ -139,14 +152,12 @@ html, body {
 }
 
 
-/* Settins menu (in the works, will prob be finished last since i need to know all of the settings for each mode) */
 #settingsmenu {
 	display: none;
 	height: 100%;
 	width: 100%;
 }
 
-/* The button that takes you back to the main menu */
 .menubutton {
 	visibility: hidden;
 	position: absolute;
@@ -165,9 +176,6 @@ html, body {
 	right: 5px;
 }
 
-/* Same as top one, but takes you back to Avg Calculator instead of the menu */
 #targetavgbutton {
 	visibility: hidden;
 }
-/* Something will go here next */
-/* */
