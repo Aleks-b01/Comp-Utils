@@ -293,7 +293,7 @@ function checkDNF() {
 	if (timepenalty[worstplace] == 3) {
 		const temptimepenalty = timepenalty.filter((penalty, index) => index !== worstplace);
    	if (Math.max(...temptimepenalty) == 3) {
-			return 1
+			return 1;
 		}
 	} else {
 		return 0;
