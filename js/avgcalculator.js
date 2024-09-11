@@ -289,25 +289,32 @@ function processWorst() {
 	processBPA();
 };
 
-function checkDNF() {
-	if (timepenalty[worstplace] == 3) {
-		const temptimepenalty = timepenalty.filter((penalty, index) => index !== worstplace);
-   	if (Math.max(...temptimepenalty) == 3) {
-			return 1;
-		}
-	} else {
-		return 0;
-	}
-};
-
 function processBPA() {
-	if (timecount == 3 && checkDNF() == 0) {
-		bpax = (time[0] + time[1] + time[2] + time[3] - worstx) / 3;
+	if (timecount == 3 && worstplace == 0 && (time[1] != 3 || time[2] != 3 || time[3] != 3)) {
+		bpax = Number(time[0] + time[1] + time[2] + time[3] - worstx) / 3;
 		while (bpax >= 60) {
 			bpaxbig += 1;
 			bpax -= 60;
 		} 
-	} else if (timecount == 3 && checkDNF() == 1) {
+	} else if (timecount == 3 && worstplace == 1 && (time[0] != 3 || time[2] != 3 || time[3] != 3)) {
+		bpax = Number(time[0] + time[1] + time[2] + time[3] - worstx) / 3;
+		while (bpax >= 60) {
+			bpaxbig += 1;
+			bpax -= 60;
+		}
+	} else if (timecount == 3 && worstplace == 2 && (time[0] != 3 || time[1] != 3 || time[3] != 3)) {
+		bpax = Number(time[0] + time[1] + time[2] + time[3] - worstx) / 3;
+		while (bpax >= 60) {
+			bpaxbig += 1;
+			bpax -= 60;
+		}
+	} else if (timecount == 3 && worstplace == 3 && (time[0] != 3 || time[1] != 3 || time[2] != 3)) {
+		bpax = Number(time[0] + time[1] + time[2] + time[3] - worstx) / 3;
+		while (bpax >= 60) {
+			bpaxbig += 1;
+			bpax -= 60;
+		} 
+	} else {
 		bpax = Infinity;
 	}
 	drawBPA();
