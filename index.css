@@ -5,27 +5,35 @@ html, body {
 	width: 100%;
 }
 
+#topmenu {
+	display: flex;
+	height: 10%;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+	margin: auto;
+}
+
 #menu {
 	display: flex;
 	height: 50%;
 	width: 30%;
 	flex-direction: row;
-	position: absolute;
-	left: 50%;
-	transform: translate(-50%,0%);
 	flex-wrap: wrap;
 	justify-content: center;
+	align-content: center;
+	margin: auto;
 }
 
 #tag {
 	height: 20%;
-	width: 100%;
+	width: auto;
 	color: white;
 	font-size: 45px;
 	font-family: Arial;
 }
 
-#calc, #scramble, #algs, #helpers, #competitiongroups, #wcalive {
+.menubuttons {
 	height: 120px;
 	width: 32%;
 	margin: 1px;
@@ -33,8 +41,8 @@ html, body {
 
 #settings {
 	position: absolute;
-	top: 5px;
-	right: 5px;
+	top: 10px;
+	right: 10px;
 	height: 50px;
 	width: 50px;
 }
@@ -46,7 +54,7 @@ html, body {
 }
 
 #target {
-	visibility: hidden;
+	visibility: collapse;
 }
 
 #timesdiv {
@@ -125,7 +133,7 @@ html, body {
 }
 
 #helpermenubutton {
-	visibility: hidden;
+	visibility: collapse;
    position: absolute;
    height: 50px;
    width: 50px;
@@ -134,7 +142,7 @@ html, body {
 }
 
 #helperscubepick {
-	visibility: hidden;
+	visibility: collapse;
 	position: absolute;
 	height: 30px;
 	width: 50px;
@@ -143,7 +151,7 @@ html, body {
 }
 
 #helpersselect {
-	visibility: hidden;
+	visibility: collapse;
 	position: absolute;
 	height: 30px;
 	width: 50px;
@@ -159,16 +167,16 @@ html, body {
 }
 
 .menubutton {
-	visibility: hidden;
+	visibility: collapse;
 	position: absolute;
 	height: 50px;
 	width: 50px;
-	top: 5px;
-	right: 5px;
+	top: 10px;
+	right: 10px;
 }
 
 #menubutton {
-	visibility: hidden;
+	visibility: collapse;
 	position: absolute;
 	height: 50px;
 	width: 50px;
@@ -177,5 +185,5 @@ html, body {
 }
 
 #targetavgbutton {
-	visibility: hidden;
+	visibility: collapse;
 }
