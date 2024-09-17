@@ -19,29 +19,48 @@ const scramblemenubutton = document.getElementById('scramblemenubutton');
 const algsmenubutton = document.getElementById('algsmenubutton');
 const helpersmenubutton = document.getElementById('helpersmenubutton');
 const menubuttonsettings = document.getElementById('menubuttonsettings');
+const css = document.getElementsByTagName('link');
+
+const screenwidth = screen.width;
+
+window.onload = function() {
+	if (screenwidth > 600) {
+		css[0].setAttribute('href', 'index.css');
+	} else if (screenwidth <= 600) {
+		css[0].setAttribute('href', 'mobile.css');
+	}
+};
 
 calc.onclick = function() {
 	menu.style.display = 'none';
+	topmenu.style.display = 'none';
 	calcdiv.style.display = 'flex';
 	calcmenubutton.style.visibility = 'visible';
+	settings.style.visibility = 'collapse';
 };
 
 scramble.onclick = function() {
 	menu.style.display = 'none';
+	topmenu.style.display = 'none';
 	scramblediv.style.display = 'flex';
 	scramblemenubutton.style.visibility = 'visible';
+	settings.style.visibility = 'collapse';
 };
 
 algs.onclick = function() {
 	menu.style.display = 'none';
+	topmenu.style.display = 'none';
 	algsdiv.style.display = 'flex';
 	algsmenubutton.style.visibility = 'visible';
+	settings.style.visibility = 'collapse';
 };
 
 helpers.onclick = function() {
 	menu.style.display = 'none';
+	topmenu.style.display = 'none';
 	helpersdiv.style.display = 'inline'; // will def change this when I'll actually build helpersdiv
 	helpersmenubutton.style.visibility = 'visible';
+	settings.style.visibility = 'collapse';
 };
 
 competitiongroups.onclick = function() {
@@ -54,37 +73,49 @@ wcalive.onclick = function() {
 
 settings.onclick = function() {
 	menu.style.display = 'none';
+	topmenu.style.display = 'none';
 	settingsmenu.style.display = 'inline'; // will also change this when i build the settings
 	menubuttonsettings.style.visibility = 'visible';
+	settings.style.visibility = 'collapse';
 };
 
 calcmenubutton.onclick = function() {
 	menu.style.display = 'flex';
+	topmenu.style.display = 'flex';
 	calcdiv.style.display = 'none';
-	calcmenubutton.style.visibility = 'hidden';
+	calcmenubutton.style.visibility = 'collapse';
+	settings.style.visibility = 'visible';
 };
-
+`
 scramblemenubutton.onclick = function() {
 	menu.style.display = 'flex';
+	topmenu.style.display = 'flex';
 	scramblediv.style.display = 'none';
-	scramblemenubutton.style.visibility = 'hidden';
+	scramblemenubutton.style.visibility = 'collapse';
+	settings.style.visibility = 'visible';
 };
 
 algsmenubutton.onclick = function() {
 	menu.style.display = 'flex';
+	topmenu.style.display = 'flex';
 	algsdiv.style.display = 'none';
-	algsmenubutton.style.visibility = 'hidden';
+	algsmenubutton.style.visibility = 'collapse';
+	settings.style.visibility = 'visible';
 };
 
 helpersmenubutton.onclick = function() {
 	menu.style.display = 'flex';
+	topmenu.style.display = 'flex';
 	helpersdiv.style.display = 'none';
-	helpersmenubutton.style.visibility = 'hidden';
+	helpersmenubutton.style.visibility = 'collapse';
+	settingss.style.visibility = 'visible';
 };
 
 menubuttonsettings.onclick = function() {
 	menu.style.display = 'flex';
+	topmenu.style.display = 'flex';
 	settingsmenu.style.display = 'none';
-	menubuttonsettings.style.visibility = 'hidden';
-};
+	menubuttonsettings.style.visibility = 'collapse';
+	settings.style.visibility = 'visible';
+};`
 });
