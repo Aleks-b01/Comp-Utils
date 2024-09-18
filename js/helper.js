@@ -1,5 +1,3 @@
-
-
 // CO, 1 = cw 2 = ccw, cw means that it has been twisted cw from solved and vice versa (check movetwists to see what moves effect corners differently), EO, 0 = Oriented 1 = Unoriented, oriented means it can be put into it's position with the correct orientation with only R L U D moves
 // Corners go: UBL, UBR, UFR, UFL, DFL, DFR, DBR, DFL
 // Edges go: UB, UR, UF, UL, FL, FR, BR, BL, DL, DF, DR, DB
@@ -65,8 +63,4 @@ function R() {
 			333co[7] = 0;
 			break;
 	}
-};
-
-function RP() {
-;
 };
