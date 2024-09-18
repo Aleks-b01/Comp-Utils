@@ -359,7 +359,7 @@ function drawWPA() {
 };
 
 function processTarget() {
-	if (timecount == 3) {
+	if (timecount == 3 && worstplace == 0) {
 		timetemp = (targetavg * 3) - time[0] - time[1] - time[2] - time[3] + bestx + worstx;
 		while (targetx >= 60) {
 			targetxbig += 1;
