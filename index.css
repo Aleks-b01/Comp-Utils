@@ -39,6 +39,29 @@ html, body {
 	margin: 1px;
 }
 
+#OK {
+	position: absolute;
+	left: 10px;
+	bottom: 10px;
+}
+
+#P2 {
+	position: absolute;
+	left: 61px;
+	bottom: 10px;
+}
+
+#DNF {
+	position: absolute;
+	left: 112px;
+	bottom: 10px;
+}
+
+.penaltybutton {
+	height: 50px;
+	width: 50px;
+}
+
 #settings {
 	position: absolute;
 	top: 10px;

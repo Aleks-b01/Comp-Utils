@@ -23,6 +23,9 @@ const formatsh = document.getElementById('formatsh');
 const formatop = document.getElementById('formatop');
 const formatop1 = document.getElementById('formatop1');
 const formatop2 = document.getElementById('formatop2');
+const ok = document.getElementById("OK");
+const p2 = document.getElementById("P2");
+const dnf = document.getElementById("DNF");
 
 let temp = 0;
 let tempstring = '';
@@ -613,6 +616,18 @@ function checkPenalty() {
 	} else if (timepenalty[timecount] == 3) {
 		return 3;
 	}
+};
+
+ok.onclick = function() {
+	timeOK();
+};
+
+p2.onclick = function() {
+	timePlus2();
+};
+
+dnf.onclick = function() {
+	timeDNF();
 };
 
 settarget.onclick = function() {
