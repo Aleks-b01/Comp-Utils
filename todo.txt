@@ -1,4 +1,4 @@
-fsr avg and bpa are 0 if there's a dnf
+make penalty buttons
 make reset button
 
 
