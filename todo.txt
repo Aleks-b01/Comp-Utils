@@ -1,6 +1,4 @@
-make penalty buttons
-make reset button
-
+debug avgcalc
 
 algtrainer html needs to be fixed
 helper html needs to be built

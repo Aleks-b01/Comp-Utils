@@ -112,7 +112,7 @@ helpersmenubutton.onclick = function() {
 	helpersdiv.style.display = 'none';
 	helpersmenubutton.style.visibility = 'collapse';
 	settingss.style.visibility = 'visible';
-};
+};`
 
 menubuttonsettings.onclick = function() {
 	menu.style.display = 'flex';
@@ -120,5 +120,5 @@ menubuttonsettings.onclick = function() {
 	settingsmenu.style.display = 'none';
 	menubuttonsettings.style.visibility = 'collapse';
 	settings.style.visibility = 'visible';
-};`
+};
 });

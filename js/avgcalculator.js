@@ -739,7 +739,7 @@ settarget.onclick = function() {
 	targetavgbutton.style.visibility = 'visible';
 };
 
-`targetavgbutton.onclick = function() {
+targetavgbutton.onclick = function() {
 	targetavgbutton.style.visibility = 'hidden';
 	menubutton.style.viibility = 'visible';
 	calcdiv.style.display = 'flex';
@@ -770,5 +770,5 @@ formatop2.onclick = function() {
    bpa.style.visibility = 'hidden';
    wpa.style.visibility = 'hidden';
    avg.innerText = 'Mean:  ';
-};`
+};
 });
