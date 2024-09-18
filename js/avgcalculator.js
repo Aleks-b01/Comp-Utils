@@ -359,8 +359,38 @@ function drawWPA() {
 };
 
 function processTarget() {
-	if (timecount == 3 && worstplace == 0) {
-		timetemp = (targetavg * 3) - time[0] - time[1] - time[2] - time[3] + bestx + worstx;
+	if (timecount == 3 && worstplace == 0 && (time[1] != Infinity || time[2] != Infinity || time[3] != Infinity)) {
+		timetemp = (targetavg * 3) - time[1] - time[2] - time[3] + bestx;
+		while (targetx >= 60) {
+			targetxbig += 1;
+			timetemp -= 60;
+		}
+		let minutes = targetxbig * 60;
+		let seconds = timetemp;
+		targetx = minutes + seconds;
+		targetxstring = targetxbig + ':' + timetemp.toFixed(2);
+	} else if (timecount == 3 && worstplace == 1 && (time[0] != Infinity || time[2] != Infinity || time[3] != Infinity)) {
+		timetemp = (targetavg * 3) - time[0] - time[2] - time[3] + bestx;
+		while (targetx >= 60) {
+			targetxbig += 1;
+			timetemp -= 60;
+		}
+		let minutes = targetxbig * 60;
+		let seconds = timetemp;
+		targetx = minutes + seconds;
+		targetxstring = targetxbig + ':' + timetemp.toFixed(2);
+	} else if (timecount == 3 && worstplace == 2 && (time[0] != Infinity || time[1] != Infinity || time[3] != Infinity)) {
+		timetemp = (targetavg * 3) - time[0] - time[1] - time[3] + bestx;
+		while (targetx >= 60) {
+			targetxbig += 1;
+			timetemp -= 60;
+		}
+		let minutes = targetxbig * 60;
+		let seconds = timetemp;
+		targetx = minutes + seconds;
+		targetxstring = targetxbig + ':' + timetemp.toFixed(2);
+	} else if (timecount == 3 && worstplace == 3 && (time[0] != Infinity || time[1] != Infinity || time[2] != Infinity)) {
+		timetemp = (targetavg * 3) - time[0] - time[1] - time[2] + bestx;
 		while (targetx >= 60) {
 			targetxbig += 1;
 			timetemp -= 60;
