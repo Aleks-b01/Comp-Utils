@@ -21,6 +21,49 @@ function R() {
 	333e[5] = 333e[10];
 	333e[10] = 333e[6];
 	333e[6] = temp;
+	switch (333co[1]) {
+		case 0:
+			333co[1] = 2;
+			break;
+		case 1:
+			333co[1] = 0;
+			break;
+		case 2:
+			333co[1] = 1;
+			break;
+	}
+	switch (333co[2]) {
+		case 0:
+			333co[2] = 1;
+			break;
+		case 1:
+			333co[2] = 2;
+			break;
+		case 2:
+			333co[2] = 0;
+			break;
+	}
+	switch (333co[6]) {
+		case 0:
+			333co[6] = 2;
+			break;
+		case 1:
+			333co[6] = 0;
+			break;
+		case 2:
+			333co[6] = 1;
+			break;
+	}
+	switch (333co[7]) {
+		case 0:
+			333co[7] = 1;
+			break;
+		case 1:
+			333co[7] = 2;
+			break;
+		case 2:
+			333co[7] = 0;
+			break;
+	}
 };
 
-// I'm not ready for this garbage lmao	

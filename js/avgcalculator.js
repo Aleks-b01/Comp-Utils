@@ -291,25 +291,25 @@ function processWorst() {
 
 function processBPA() {
 	if (timecount == 3 && worstplace == 0 && (time[1] != 3 || time[2] != 3 || time[3] != 3)) {
-		bpax = Number(time[0] + time[1] + time[2] + time[3] - worstx) / 3;
+		bpax = (time[1] + time[2] + time[3]) / 3;
 		while (bpax >= 60) {
 			bpaxbig += 1;
 			bpax -= 60;
 		} 
 	} else if (timecount == 3 && worstplace == 1 && (time[0] != 3 || time[2] != 3 || time[3] != 3)) {
-		bpax = Number(time[0] + time[1] + time[2] + time[3] - worstx) / 3;
+		bpax = (time[0] + time[2] + time[3]) / 3;
 		while (bpax >= 60) {
 			bpaxbig += 1;
 			bpax -= 60;
 		}
 	} else if (timecount == 3 && worstplace == 2 && (time[0] != 3 || time[1] != 3 || time[3] != 3)) {
-		bpax = Number(time[0] + time[1] + time[2] + time[3] - worstx) / 3;
+		bpax = (time[0] + time[1] + time[3]) / 3;
 		while (bpax >= 60) {
 			bpaxbig += 1;
 			bpax -= 60;
 		}
 	} else if (timecount == 3 && worstplace == 3 && (time[0] != 3 || time[1] != 3 || time[2] != 3)) {
-		bpax = Number(time[0] + time[1] + time[2] + time[3] - worstx) / 3;
+		bpax = (time[0] + time[1] + time[2]) / 3;
 		while (bpax >= 60) {
 			bpaxbig += 1;
 			bpax -= 60;
@@ -384,13 +384,21 @@ function drawTarget() {
 };
 
 function processAVG() {
-	if (timecount == 4 && checkDNF() == 0) {
-		avgx = (time[0] + time[1] + time[2] + time[3] + time[4] - bestx - worstx) / 3;
+	if (timecount == 4 && worstplace == 0 && (time[1] != Infinity || time[2] != Infinity || time[3] != Infinity || time[4] != Infinity)) {
+		avgx = (time[1] + time[2] + time[3] + time[4] - bestx) / 3;
+	} else if (timecount == 4 && worstplace == 1 && (time[0] != Infinity || time[2] != Infinity || time[3] != Infinity || time[4] != Infinity)) {
+		avgx = (time[0] + time[2] + time[3] + time[4] - bestx) / 3;
+	} else if (timecount == 4 && worstplace == 2 && (time[0] != Infinity || time[1] != Infinity || time[3] != Infinity || time[4] != Infinity)) {
+		avgx = (time[0] + time[1] + time[3] + time[4] - bestx) / 3;
+	} else if (timecount == 4 && worstplace == 3 && (time[0] != Infinity || time[1] != Infinity || time[2] != Infinity || time[4] != Infinity)) {
+		avgx = (time[0] + time[1] + time[2] + time[4] - bestx) / 3;
+	} else if (timecount == 4 && worstplace == 4 && (time[0] != Infinity || time[1] != Infinity || time[2] != Infinity || time[3] != Infinity)) {
+		avgx = (time[0] + time[1] + time[2] + time[3] - bestx) / 3;
 		while (avgx >= 60) {
 			avgxbig += 1;
 			avgx -= 60;
 		}
-	} else if (checkDNF() == 1) {
+	} else {
 		avgx = Infinity;
 	}
 	drawAVG();
