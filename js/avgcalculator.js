@@ -23,9 +23,11 @@ const formatsh = document.getElementById('formatsh');
 const formatop = document.getElementById('formatop');
 const formatop1 = document.getElementById('formatop1');
 const formatop2 = document.getElementById('formatop2');
-const ok = document.getElementById("OK");
-const p2 = document.getElementById("P2");
-const dnf = document.getElementById("DNF");
+const ok = document.getElementById('OK');
+const p2 = document.getElementById('P2');
+const dnf = document.getElementById('DNF');
+const resetb = document.getElementById('resetbutton');
+const deleteb = document.getElementById('deleteb');
 
 let temp = 0;
 let tempstring = '';
@@ -73,6 +75,12 @@ function handleShortcut(event) {
 	} else if (event.ctrlKey && event.key === "3" && calcdiv.style.display === 'flex') {
 		event.preventDefault();
 		timeDNF();
+	} else if (event.ctrlKey && (event.key === "r" || event.key === "R") && calcdiv.style.display === 'flex') {
+		event.preventDefault();
+		reset();
+	} else if (event.ctrlKey && (event.key === "z" || event.key === "Z") && calcdiv.style.display === 'flex') {
+		event.preventDefault();
+		deletesolve();
 	}
 };
 
@@ -90,7 +98,7 @@ function getTime() {
 };
 
 function processTime() {
-	if ((timetemp < 6000 || timetemp >= 10000) && Number.isInteger(timetemp)) {
+	if (((timetemp < 6000 && timetemp > 0) || timetemp >= 10000) && Number.isInteger(timetemp)) {
 		temp = timetemp / 100;
 		timecount += 1;
 		while (temp >= 100) {
@@ -103,7 +111,7 @@ function processTime() {
 		time.push(timetemp);
 		timebig.push(timebigcount);
 		timebigcount = 0;
-	} else if (timetemp < 60 && !Number.isInteger(timetemp) && !tempstring.includes(":")) {
+	} else if (timetemp < 60 && timetemp > 0 && !Number.isInteger(timetemp) && !tempstring.includes(":")) {
 		time.push(timetemp);
 		timecount += 1;
 		timebig.push(zero);
@@ -660,6 +668,70 @@ dnf.onclick = function() {
 	timeDNF();
 };
 
+deleteb.onclick = function() {
+	deletesolve();
+};
+
+resetb.onclick = function() {
+	reset();
+};
+
+function deletesolve() {
+	if (timecount == 0) {
+		time.pop();
+		timebig.pop();
+		timepenalty[timecount] = 1;
+		timecount -= 1
+		time1.innerText = '1.  ';
+	} else if (timecount == 1) {
+		time.pop();
+		timebig.pop();
+		timepenalty[timecount] = 1;
+		timecount -= 1
+		time2.innerText = '2.  ';
+	} else if (timecount == 2) {
+		time.pop();
+		timebig.pop();
+		timepenalty[timecount] = 1;
+		timecount -= 1
+		time3.innerText = '3.  ';
+	} else if (timecount == 3) {
+		time.pop();
+		timebig.pop();
+		timepenalty[timecount] = 1;
+		timecount -= 1
+		time4.innerText = '4.  ';
+	} else if (timecount == 4) {
+		time.pop();
+		timebig.pop();
+		timepenalty[timecount] = 1;
+		timecount -= 1
+		time5.innerText = '5.  ';
+	}
+	drawTime();
+};
+
+function reset() {
+	while (time[0] > 0) {
+		time.pop();
+	}
+	while (timebig[0] > 0) {
+		timebig.pop()
+	}
+	time1.innerText = "1.  ";
+	time2.innerText = "2.  ";
+	time3.innerText = "3.  ";
+	time4.innerText = "4.  ";
+	time5.innerText = "5.  ";
+	best.innerText = "Best:  ";
+	worst.innerText = "Worst:  ";
+	bpa.innerText = "BPA:  ";
+	wpa.innerText = "WPA:  ";
+	target.innerText = "Target:  ";
+	avg.innerText = "Average:  ";
+	timecount = -1;
+};
+
 settarget.onclick = function() {
 	calcdiv.style.display = 'none';
 	settingsmenu.style.display = 'inline' // ch
@@ -667,7 +739,7 @@ settarget.onclick = function() {
 	targetavgbutton.style.visibility = 'visible';
 };
 
-targetavgbutton.onclick = function() {
+`targetavgbutton.onclick = function() {
 	targetavgbutton.style.visibility = 'hidden';
 	menubutton.style.viibility = 'visible';
 	calcdiv.style.display = 'flex';
@@ -698,5 +770,5 @@ formatop2.onclick = function() {
    bpa.style.visibility = 'hidden';
    wpa.style.visibility = 'hidden';
    avg.innerText = 'Mean:  ';
-};
+};`
 });

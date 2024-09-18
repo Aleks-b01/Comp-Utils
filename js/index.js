@@ -20,6 +20,7 @@ const algsmenubutton = document.getElementById('algsmenubutton');
 const helpersmenubutton = document.getElementById('helpersmenubutton');
 const menubuttonsettings = document.getElementById('menubuttonsettings');
 const css = document.getElementsByTagName('link');
+const reset = document.getElementById('resetbutton');
 
 const screenwidth = screen.width;
 
@@ -37,6 +38,7 @@ calc.onclick = function() {
 	calcdiv.style.display = 'flex';
 	calcmenubutton.style.visibility = 'visible';
 	settings.style.visibility = 'collapse';
+	reset.style.visibility = 'visible';
 };
 
 scramble.onclick = function() {
@@ -85,6 +87,7 @@ calcmenubutton.onclick = function() {
 	calcdiv.style.display = 'none';
 	calcmenubutton.style.visibility = 'collapse';
 	settings.style.visibility = 'visible';
+	reset.style.visibility - 'collapse';
 };
 `
 scramblemenubutton.onclick = function() {
