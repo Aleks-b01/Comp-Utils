@@ -464,7 +464,7 @@ function drawTimeM() {
 	} else if (timecount == 2 && timebig[2] == 0 && checkPenalty() == 1) {
 		time3.innerText = '3.  ' + time[2].toFixed(2);
 	} else if (timecount == 0 && timebig[0] > 0 && checkPenalty() == 1) {
-		timetemp = time[0] - timebig[0] * 60 + ':' + timetemp.toFixed(2);
+		timetemp = time[0] - timebig[0] * 60; 
 		time1.innerText = '1.  ' + timebig[0] + ':' + timetemp.toFixed(2);
 	} else if (timecount == 1 && timebig[1] > 0 && checkPenalty() == 1) {
 		timetemp = time[1] - timebig[1] * 60;
@@ -472,7 +472,7 @@ function drawTimeM() {
 	} else if (timecount == 2 && timebig[2] > 0 && checkPenalty() == 1) {
 		timetemp = time[2] - timebig[2] * 60;
 		time3.innerText = '3.  ' + timebig[2] + ':' + timetemp.toFixed(2);
-	} else if (ckeckPenalty == 2) {
+	} else if (checkPenalty() == 2) {
 		drawTimePlus2M();
 	} else if (checkPenalty() == 3) {
 		drawTimeDNFM();
@@ -489,7 +489,7 @@ function drawTimePlus2M() {
 	} else if (timecount == 2 && timebig[2] == 0 && checkPenalty() == 2) {
 		time3.innerText = '3.  ' + time[2].toFixed(2) + '+';
 	} else if (timecount == 0 && timebig[0] > 0 && checkPenalty() == 2) {
-		timetemp = time[0] - timebig[0] * 60 + ':' + timetemp.toFixed(2) + '+';
+		timetemp = time[0] - timebig[0] * 60;
 		time1.innerText = '1.  ' + timebig[0] + ':' + timetemp.toFixed(2) + '+';
 	} else if (timecount == 1 && timebig[1] > 0 && checkPenalty() == 2) {
 		timetemp = time[1] - timebig[1] * 60;
@@ -503,9 +503,9 @@ function drawTimePlus2M() {
 function drawTimeDNFM() {
 	if (timecount == 0 && checkPenalty() == 3) {
 		time1.innerText = '1.  DNF';
-	} else if (timecount == 1 && checkPenalty == 3) {
+	} else if (timecount == 1 && checkPenalty() == 3) {
 		time2.innerText = '2.  DNF';
-	} else if (timecount == 2 && checkPEnalty() == 3) {
+	} else if (timecount == 2 && checkPenalty() == 3) {
 		time3.innerText = '3.  DNF';
 	}
 };
@@ -521,7 +521,7 @@ function processBestM() {
 	} else if (bestx < 60 && timepenalty[bestplace] == 2) {
 		best.innerText = 'Best:  ' + best.toFixed(2) + '+';
 		} else if (bestx >= 60 && bestx < Infinity && timepenalty[bestplace] == 2) {
-			timetemp = bestx = timebig[bestplace] * 60;
+			timetemp = bestx - timebig[bestplace] * 60;
 			best.innerText = 'Best:  ' + timebig[bestplace] + ':' + timetemp.toFixed(2) + '+';
 	} else if (bestx == Infinity) {
 		best.innerText == 'Best:  DNF';
@@ -561,7 +561,6 @@ function processTargetM() {
 		targetx = minutes + seconds;
 	}
 	drawTargetM();
-	console.log(targetx, timetemp);
 };
 
 function drawTargetM() {

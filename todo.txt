@@ -1,4 +1,4 @@
-debug avgcalc
+make either helper or scramble gen next, and improve html and css when possible
 
 algtrainer html needs to be fixed
 helper html needs to be built
