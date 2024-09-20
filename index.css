@@ -33,10 +33,22 @@ html, body {
 	font-family: arial;
 }
 
+#settarget {
+	color: white;
+	font-family: arial;
+	font-size: 30px;
+}
+
 .menubuttons {
 	height: 120px;
 	width: 32%;
 	margin: 1px;
+}
+
+.time {
+	font-family: arial;
+	font-size: 30px;
+	color: white;
 }
 
 #OK {
@@ -224,4 +236,9 @@ html, body {
 
 #targetavgbutton {
 	visibility: collapse;
+	position: absolute;
+	height: 50px;
+	width: 50px;
+	top: 10px;
+	right: 10px;
 }

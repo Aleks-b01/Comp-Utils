@@ -16,7 +16,7 @@ const avg = document.getElementById('avg');
 const settarget = document.getElementById('settarget');
 const settingsmenu = document.getElementById('settingsmenu');
 const calcdiv = document.getElementById('calcdiv');
-const menubutton = document.getElementById('menubutton');
+const calcmenubutton = document.getElementById('calcmenubutton');
 const targetavgbutton = document.getElementById('targetavgbutton');
 const currenttarget = document.getElementById('currenttarget');
 const formatsh = document.getElementById('formatsh');
@@ -733,14 +733,14 @@ function reset() {
 
 settarget.onclick = function() {
 	calcdiv.style.display = 'none';
-	settingsmenu.style.display = 'inline' // ch
-	menubutton.style.visibility = 'hidden';
+	settingsmenu.style.display = 'inline'; // ch
+	calcmenubutton.style.visibility = 'hidden';
 	targetavgbutton.style.visibility = 'visible';
 };
 
 targetavgbutton.onclick = function() {
 	targetavgbutton.style.visibility = 'hidden';
-	menubutton.style.viibility = 'visible';
+	calcmenubutton.style.visibility = 'visible';
 	calcdiv.style.display = 'flex';
 	settingsmenu.style.display = 'none';
 };
