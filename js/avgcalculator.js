@@ -28,6 +28,10 @@ const p2 = document.getElementById('P2');
 const dnf = document.getElementById('DNF');
 const resetb = document.getElementById('resetbutton');
 const deleteb = document.getElementById('deleteb');
+const confirmdiv = document.getElementById('confirmdiv');
+const confirmtext = document.getElementById('confirmtext');
+const cancel = document.getElementById('cancel');
+const yes = document.getElementById('yes');
 
 let temp = 0;
 let tempstring = '';
@@ -57,30 +61,37 @@ let avgxbig = 0;
 let bestplace = 0;
 let worstplace = 0;
 let format = 1;
+let confirmint = 0;
 
 // Keybinds
 function handleShortcut(event) {
-	if (event.key === "Enter" && document.activeElement === timein) {
+	if (event.key === "Enter" && document.activeElement === timein && confirmint == 0) {
 		event.preventDefault();
 		getTime();
-	} else if (event.key === "Enter" && document.activeElement === targetin) {
+	} else if (event.key === "Enter" && document.activeElement === targetin && confirmint == 0) {
 		event.preventDefault();
 		getTargetAVG();
-	} else if (event.ctrlKey && event.key === "1" && calcdiv.style.display === 'flex') {
+	} else if (event.ctrlKey && event.key === "1" && calcdiv.style.display === 'flex' && confirmint == 0) {
 		event.preventDefault();
 		timeOK();
-	} else if (event.ctrlKey && event.key === "2" && calcdiv.style.display === 'flex') {
+	} else if (event.ctrlKey && event.key === "2" && calcdiv.style.display === 'flex' && confirmint == 0) {
 		event.preventDefault();
 		timePlus2();
-	} else if (event.ctrlKey && event.key === "3" && calcdiv.style.display === 'flex') {
+	} else if (event.ctrlKey && event.key === "3" && calcdiv.style.display === 'flex' && confirmint == 0) {
 		event.preventDefault();
 		timeDNF();
-	} else if (event.ctrlKey && (event.key === "r" || event.key === "R") && calcdiv.style.display === 'flex') {
+	} else if (event.ctrlKey && (event.key === "r" || event.key === "R") && calcdiv.style.display === 'flex' && confirmint == 0) {
 		event.preventDefault();
-		reset();
-	} else if (event.ctrlKey && (event.key === "z" || event.key === "Z") && calcdiv.style.display === 'flex') {
+		resetconfirm();
+	} else if (event.ctrlKey && (event.key === "z" || event.key === "Z") && calcdiv.style.display === 'flex' && confirmint == 0) {
+		event.preventDefault();
+		deletesolveconfirm();
+	} else if (event.key === "Enter" && confirmint == 1) {
 		event.preventDefault();
 		deletesolve();
+	} else if (event.key === "Enter" && confirmint == 2) {
+		event.preventDefault();
+		reset();
 	}
 };
 
@@ -668,11 +679,17 @@ dnf.onclick = function() {
 };
 
 deleteb.onclick = function() {
-	deletesolve();
+	deletesolveconfirm();
 };
 
 resetb.onclick = function() {
-	reset();
+	resetconfirm();
+};
+
+function deletesolveconfirm() {
+	confirmtext.innerText = 'Do you really want to delete this solve?';
+	confirmdiv.style.display = 'flex';
+	confirmint = 1;
 };
 
 function deletesolve() {
@@ -708,6 +725,14 @@ function deletesolve() {
 		time5.innerText = '5.  ';
 	}
 	drawTime();
+	confirmdiv.style.display = 'none';
+	confirmint = 0;
+};
+
+function resetconfirm() {
+	confirmtext.innerText = 'Do you really want to reset these solves?';
+	confirmdiv.style.display = 'flex';
+	confirmint = 2;
 };
 
 function reset() {
@@ -729,6 +754,23 @@ function reset() {
 	target.innerText = "Target:  ";
 	avg.innerText = "Average:  ";
 	timecount = -1;
+	confirmdiv.style.display = 'none';
+	confirmint = 0;
+};
+
+cancel.onclick = function() {
+	confirmdiv.style.display = 'none';
+	confirmint = 0;
+};
+
+yes.onclick = function() {
+	if (confirmint == 1) {
+		deletesolve();
+		confirmint = 0;
+	} else if (confirmint == 2) {
+		reset();
+		confirmint = 0;
+	}
 };
 
 settarget.onclick = function() {
