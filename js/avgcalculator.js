@@ -80,10 +80,10 @@ function handleShortcut(event) {
 	} else if (event.ctrlKey && event.key === "3" && calcdiv.style.display === 'flex' && confirmint == 0) {
 		event.preventDefault();
 		timeDNF();
-	} else if (event.ctrlKey && (event.key === "r" || event.key === "R") && calcdiv.style.display === 'flex' && confirmint == 0) {
+	} else if (event.ctrlKey && (event.key === "r" || event.key === "R") && calcdiv.style.display === 'flex' && confirmint == 0 && timecount != -1) {
 		event.preventDefault();
 		resetconfirm();
-	} else if (event.ctrlKey && (event.key === "z" || event.key === "Z") && calcdiv.style.display === 'flex' && confirmint == 0) {
+	} else if (event.ctrlKey && (event.key === "z" || event.key === "Z") && calcdiv.style.display === 'flex' && confirmint == 0 && timecount != -1) {
 		event.preventDefault();
 		deletesolveconfirm();
 	} else if (event.key === "Enter" && confirmint == 1) {
@@ -92,6 +92,9 @@ function handleShortcut(event) {
 	} else if (event.key === "Enter" && confirmint == 2) {
 		event.preventDefault();
 		reset();
+	} else if (event.key === "Escape" && (confirmint == 1 || confirmint == 2)) {
+		confirmint = 0;
+		confirmdiv.style.display = 'none';
 	}
 };
 
@@ -679,11 +682,15 @@ dnf.onclick = function() {
 };
 
 deleteb.onclick = function() {
-	deletesolveconfirm();
+	if (timecount != -1) {
+		deletesolveconfirm();
+	}
 };
 
 resetb.onclick = function() {
-	resetconfirm();
+	if (timecount != -1) {
+		resetconfirm();
+	}
 };
 
 function deletesolveconfirm() {
