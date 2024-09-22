@@ -38,7 +38,6 @@ calc.onclick = function() {
 	calcdiv.style.display = 'flex';
 	calcmenubutton.style.visibility = 'visible';
 	settings.style.visibility = 'collapse';
-	reset.style.visibility = 'visible';
 };
 
 scramble.onclick = function() {

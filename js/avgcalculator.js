@@ -26,7 +26,7 @@ const formatop2 = document.getElementById('formatop2');
 const ok = document.getElementById('OK');
 const p2 = document.getElementById('P2');
 const dnf = document.getElementById('DNF');
-const resetb = document.getElementById('resetbutton');
+const resetb = document.getElementById('resetb');
 const deleteb = document.getElementById('deleteb');
 const confirmdiv = document.getElementById('confirmdiv');
 const confirmtext = document.getElementById('confirmtext');
@@ -441,12 +441,28 @@ function drawTarget() {
 function processAVG() {
 	if (timecount == 4 && worstplace == 0 && (time[1] != Infinity || time[2] != Infinity || time[3] != Infinity || time[4] != Infinity)) {
 		avgx = (time[1] + time[2] + time[3] + time[4] - bestx) / 3;
+		while (avgx >= 60) {
+			avgxbig += 1;
+			avgx -= 60;
+		}
 	} else if (timecount == 4 && worstplace == 1 && (time[0] != Infinity || time[2] != Infinity || time[3] != Infinity || time[4] != Infinity)) {
 		avgx = (time[0] + time[2] + time[3] + time[4] - bestx) / 3;
+		while (avgx >= 60) {
+			avgxbig += 1;
+			avgx -= 60;
+		}
 	} else if (timecount == 4 && worstplace == 2 && (time[0] != Infinity || time[1] != Infinity || time[3] != Infinity || time[4] != Infinity)) {
 		avgx = (time[0] + time[1] + time[3] + time[4] - bestx) / 3;
+		while (avgx >= 60) {
+			avgxbig += 1;
+			avgx -= 60;
+		}
 	} else if (timecount == 4 && worstplace == 3 && (time[0] != Infinity || time[1] != Infinity || time[2] != Infinity || time[4] != Infinity)) {
 		avgx = (time[0] + time[1] + time[2] + time[4] - bestx) / 3;
+		while (avgx >= 60) {
+			avgxbig += 1;
+			avgx -= 60;
+		}
 	} else if (timecount == 4 && worstplace == 4 && (time[0] != Infinity || time[1] != Infinity || time[2] != Infinity || time[3] != Infinity)) {
 		avgx = (time[0] + time[1] + time[2] + time[3] - bestx) / 3;
 		while (avgx >= 60) {

@@ -51,39 +51,6 @@ html, body {
 	color: white;
 }
 
-#OK {
-	position: absolute;
-	left: 10px;
-	bottom: 10px;
-}
-
-#P2 {
-	position: absolute;
-	left: 61px;
-	bottom: 10px;
-}
-
-#DNF {
-	position: absolute;
-	left: 112px;
-	bottom: 10px;
-}
-
-#deleteb {
-	position: absolute;
-	left: 163px;
-	bottom: 10px;
-}
-
-#resetbutton {
-	position: absolute;
-	top: 10px;
-	right: 61px;
-	height: 50px;
-	width: 50px;
-	visibility: collapse;
-}
-
 .penaltybutton {
 	height: 50px;
 	width: 50px;
@@ -101,6 +68,8 @@ html, body {
 	display: none; /* Normally flex */
 	height: 100%;
 	width: 100%;
+	flex-direction: column;
+	flex-wrap: wrap;
 }
 
 #target {
@@ -108,20 +77,39 @@ html, body {
 }
 
 #timesdiv {
-	height: 100%;
-	width: 50%;
+	height: 50%;
+	width: 25%;
 }
 
 #avgdiv {
+	height: 50%;
+	width: 25%;
+}
+
+#timeindiv {
 	height: 100%;
-	width: 50%;
+	width: 75%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#timein {
+	text-align: center;
+	height: 20%;
+	width: 65%;
+	font-size: 100px;
 }
 
 #settarget {
+	height: 50px;
+	width: 50px;
 	position: absolute;
-	bottom: 20px;
-	right: 20px;
+	bottom: 10px;
+	right: 10px;
 	z-index: 1;
+	font-size: 10px;
+	color: black;
 }
 
 #format {
@@ -144,8 +132,8 @@ html, body {
 }
 
 #confirmdiv {
-	height: 60%;
-	width: 60%;
+	height: 40%;
+	width: 40%;
 	display: none;
 	flex-wrap: wrap;
 	position: absolute;
@@ -155,13 +143,29 @@ html, body {
 	background-color: rgba(0, 0, 0, 0.6);
 }
 
+#calcmenubutton {
+	height: 50px;
+	width: 50px;
+}
+
 #confirmtext {
 	height: 80%;
 	width: 100%;
 	color: white;
 	font-family: arial;
-	font-size: 50px;
+	font-size: 40px;
 	text-align: center;
+}
+
+#calcdivbuttons {
+	height: 100px;
+	width: 150px;
+	display: flex;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	flex-wrap: wrap;
+	flex-direction: row;
 }
 
 #cancel {
@@ -170,7 +174,7 @@ html, body {
 	font-family: arial;
 	height: 20%;
 	width: 50%;
-	font-size: 50px;
+	font-size: 40px;
 }
 
 #yes {
@@ -179,7 +183,7 @@ html, body {
 	font-family: arial;
 	height: 20%;
 	width: 50%;
-	font-size: 50px;
+	font-size: 40px;
 }
 
 #scramblediv {
@@ -262,15 +266,6 @@ html, body {
 	width: 50px;
 	top: 10px;
 	right: 10px;
-}
-
-#menubutton {
-	visibility: collapse;
-	position: absolute;
-	height: 50px;
-	width: 50px;
-	top: 5px;
-	right: 5px;
 }
 
 #targetavgbutton {
