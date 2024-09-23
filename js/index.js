@@ -19,6 +19,7 @@ const scramblemenubutton = document.getElementById('scramblemenubutton');
 const algsmenubutton = document.getElementById('algsmenubutton');
 const helpersmenubutton = document.getElementById('helpersmenubutton');
 const menubuttonsettings = document.getElementById('menubuttonsettings');
+const css = document.getElementById('css');
 const lxa = document.getElementById('lxa');
 const hbody = document.getElementById('hbody');
 
