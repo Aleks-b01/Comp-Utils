@@ -25,6 +25,14 @@ html, body {
 	margin: auto;
 }
 
+#lxa {
+	height: 50px;
+	width: 50px;
+	position: absolute;
+	top: 10px;
+	right: 60px;
+}
+
 #tag {
 	height: 20%;
 	width: auto;
@@ -187,36 +195,26 @@ html, body {
 }
 
 #scramblediv {
-	display: none; /* Normally flex */
+	display: none;
 	height: 100%;
 	width: 100%;
 	justify-content: center;
 	align-items: center;
 }
 
-#eventselector {
-	height: 30px; /* Height and width will most likely be changed */
-	width: 30px;
+#scrambleeventselector {
+	height: 50px;
+	width: 50px;
 	position: absolute;
-	top: 5px;
-	left: 5px;
-}
-#scrambletextdiv {
-	display: flex;
-	height: 100%;
-	width: 100%;
-	justify-content: center;
-	align-items: center;
+	top: 10px;
+	left: 10px;
 }
 
-#eventselectormenudiv {
-	display: none; /* Normally block */
-	height: 50%;
-	width: 25%; /* This will prob be changed */
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%,-50%);
+#scrambletext {
+	width: 80%;
+	text-align: center;
+	font-size: 50px;
+	color: white;
 }
 
 #helpersdiv {

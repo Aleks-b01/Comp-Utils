@@ -19,10 +19,12 @@ const scramblemenubutton = document.getElementById('scramblemenubutton');
 const algsmenubutton = document.getElementById('algsmenubutton');
 const helpersmenubutton = document.getElementById('helpersmenubutton');
 const menubuttonsettings = document.getElementById('menubuttonsettings');
-const css = document.getElementsByTagName('link');
-const reset = document.getElementById('resetbutton');
+const lxa = document.getElementById('lxa');
+const hbody = document.getElementById('hbody');
 
 const screenwidth = screen.width;
+
+let lxam = 1;
 
 window.onload = function() {
 	if (screenwidth > 600) {
@@ -31,6 +33,18 @@ window.onload = function() {
 		css[0].setAttribute('href', 'mobile.css');
 	}
 };
+
+lxa.onclick = function() {
+	if (lxam == 1) {
+		hbody.style.backgroundColor = 'white';
+		lxa.innerText = 'L';
+		lxam = 2;
+	} else if (lxam == 2) {
+		hbody.style.backgroundColor = 'rgb(47, 52, 56)';
+		lxa.innerText = 'D';
+		lxam = 1;
+	}
+}
 
 calc.onclick = function() {
 	menu.style.display = 'none';
