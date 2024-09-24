@@ -252,5 +252,6 @@ function genScramble() {
 			scramble = await randomScrambleForEvent("555bf");
 			scrambletext.innerText = scramble;
 	}
+	;
 };
 });
