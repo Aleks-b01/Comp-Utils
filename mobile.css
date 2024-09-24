@@ -7,7 +7,7 @@ html, body {
 
 #topmenu {
 	display: flex;
-	height: 10%;
+	height: 15%;
 	width: 100%;
 	justify-content: center;
 	position: absolute;
@@ -22,24 +22,16 @@ html, body {
 	font-family: arial;
 }
 
-#settings {
-	position: absolute;
-	height: 130px;
-	width: 130px;
-	top: 0;
-	right: 0;
-}
-
 #menu {
 	display: flex;
-	height: 90%;
+	height: 85%;
 	width: 100%;
 	flex-direction: row;
 	flex-wrap: wrap;
 	position: absolute;
 	bottom: 0;
-	justify-content: center;
-	align-items: center;
+	justify-content: space-evenly;
+	align-items: space-evenly;
 }
 
 .menubuttons {
@@ -50,7 +42,93 @@ html, body {
 	margin-right: 1%;
 }
 
+#settings {
+	position: absolute;
+	height: 130px;
+	width: 130px;
+	top: 10px;
+	right: 10px;
+}
+
+#lxa {
+	visibility: hidden;
+}
+
 #calcdiv {
 	display: none;
+	height: 100%;
+	width: 100%;
+}
 
+#timeindiv {
+	display: flex;
+	height: 15%;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	bottom: 0px;
+}
+
+#timein {
+	height: 95%;
+	width: 95%;
+	color: black;
+	font-family: arial;
+	font-size: 200px;
+	text-align: center;
+}
+
+#timesdiv {
+	height: 42.5%;
+	width: 100%;
+	position: absolute;
+	top: 0px;
+	left: 20px;
+}
+
+#avgdiv {
+	height: 57.5%;
+	width: 100%;
+	position: absolute;
+	bottom: 0px;
+	left: 20px;
+}
+
+#calcdivbuttons {
+	width: 150px;
+	height: 70%;
+	display: flex;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	flex-wrap: wrap;
+}
+
+.penaltybutton {
+	height: 150px;
+	width: 150px;
+}
+
+#calcmenubutton {
+	height: 150px;
+	width: 150px;
+}
+
+#settarget {
+	height: 150px;
+	width: 150px;
+}
+
+.time {
+	color: white;
+	font-size: 70px;
+}
+
+#scramblediv {
+	display: none;
+}
+
+#settingsmenu {
+	display: none;
 }
