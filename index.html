@@ -53,13 +53,33 @@
 		<button id="yes">Yes</button>
 	</div>
 	<button id="settarget">Target</button>
+</div>
 <div id="scramblediv">
+	<button id="scramblenext"></button>
 	<button id="scramblemenubutton"></button>
-	<button id="scrambleeventselector">3x3</button>
-	<h1 id="scrambletext">wgehliyfewgvivgeyvgefkfgryqkgfrwy</h1>
+	<button id="scrambleeventselector"></button>
+	<h1 id="scrambletext"></h1>
+	<div id="scrambleeventselectordiv">
+		<button class="scrambleevent" id="222">2x2</button>
+		<button class="scrambleevent" id="333">3x3</button>
+		<button class="scrambleevent" id="444">4x4</button>
+		<button class="scrambleevent" id="555">5x5</button>
+		<button class="scrambleevent" id="666">6x6</button>
+		<button class="scrambleevent" id="777">7x7</button>
+		<button class="scrambleevent" id="3oh">3x3 OH</button>
+		<button class="scrambleevent" id="3bld">3BLD</button>
+		<button class="scrambleevent" id="3fm">FMC</button>
+		<button class="scrambleevent" id="pyra">Pyraminx</button>
+		<button class="scrambleevent" id="skewb">Skewb</button>
+		<button class="scrambleevent" id="sq1">SQ1</button>
+		<button class="scrambleevent" id="mgmx">Mega</button>
+		<button class="scrambleevent" id="clock">Clock</button>
+		<button class="scrambleevent" id="4bld">4BLD</button>
+		<button class="scrambleevent" id="5bld">5BLD</button>
+	</div>
 </div>
 <div id="settingsmenu">
-	<button class="menubutton" id="menubuttonsettings"></button>
+	<button id="settingsmenubutton"></button>
 	<button id="targetavgbutton"></button>
 	<h1 class="settingsh" id="avgcalcsettings">Average Calculator</h1>
 	<h1 class="time" id="currenttarget">Target average:  </h1>
@@ -77,7 +97,7 @@
 </body>
 <script src="js/index.js"></script>
 <script src="js/avgcalculator.js"></script>
-<script src="js/scramble.js"></script>
+<script type="module" src="js/scramble.js"></script>
 <script src="js/algtrainer.js"></script>
 <script src="js/helper.js"></script>
 </html>
