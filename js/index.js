@@ -1,5 +1,6 @@
 // This file is dedicated to only the main menu functionality
 document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener("keydown", handleShortcut);
 
 const menu = document.getElementById('menu');
 const calc = document.getElementById('calc');
@@ -32,6 +33,25 @@ window.onload = function() {
 		css[0].setAttribute('href', 'index.css');
 	} else if (screenwidth <= 600) {
 		css[0].setAttribute('href', 'mobile.css');
+	}
+};
+
+function handleShortcut(event) {
+	if (event.key === "Escape" && calcdiv.style.display === 'flex') {
+		event.preventDefault();
+		exitCalc();
+	} else if (event.key === "Escape" && scramblediv.style.display === 'flex') {
+		event.preventDefault();
+		exitScramble();
+	} else if (event.key === "Escape" && algsdiv.style.display === 'flex') {
+		event.preventDefault();
+		exitAlgs();
+	} else if (event.key === "Escape" && helpersdiv.style.display === 'flex') {
+		event.preventDefault();
+		exitHelper();
+	} else if (event.key === "Escape" && settingsmenu.style.display === 'flex') {
+		event.preventDefault();
+		exitSettings();
 	}
 };
 
@@ -97,6 +117,10 @@ settings.onclick = function() {
 };
 
 calcmenubutton.onclick = function() {
+	exitCalc();
+};
+
+function exitCalc() {
 	menu.style.display = 'flex';
 	topmenu.style.display = 'flex';
 	calcdiv.style.display = 'none';
@@ -105,14 +129,22 @@ calcmenubutton.onclick = function() {
 };
 
 scramblemenubutton.onclick = function() {
+	exitScramble();
+};
+
+function exitScramble() {
 	menu.style.display = 'flex';
 	topmenu.style.display = 'flex';
 	scramblediv.style.display = 'none';
 	settings.style.visibility = 'visible';
 	lxa.style.visibility = 'visible';
 };
-`
+
 algsmenubutton.onclick = function() {
+	exitAlgs();
+};
+
+function exitAlgs() {
 	menu.style.display = 'flex';
 	topmenu.style.display = 'flex';
 	algsdiv.style.display = 'none';
@@ -121,14 +153,22 @@ algsmenubutton.onclick = function() {
 };
 
 helpersmenubutton.onclick = function() {
+	exitHelper();
+};
+
+function exitHelper() {
 	menu.style.display = 'flex';
 	topmenu.style.display = 'flex';
 	helpersdiv.style.display = 'none';
 	settingss.style.visibility = 'visible';
 	lxa.style.visibility = 'visible';
-};`
+};
 
 settingsmenubutton.onclick = function() {
+	exitSettings();
+};
+
+function exitSettings() {
 	menu.style.display = 'flex';
 	topmenu.style.display = 'flex';
 	settingsmenu.style.display = 'none';

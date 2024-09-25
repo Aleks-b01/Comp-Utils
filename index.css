@@ -48,7 +48,7 @@ html, body {
 }
 
 .menubuttons {
-	height: 120px;
+	height: 32%;
 	width: 32%;
 	margin: 1px;
 }
@@ -291,8 +291,8 @@ html, body {
 }
 
 #settingsmenubutton {
-	height: 50%;
-	width: 50%;
+	height: 50px;
+	width: 50px;
 	visibility: collapse;
 	position: absolute;
 	top: 10px;
