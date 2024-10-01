@@ -83,16 +83,18 @@ html, body {
 #timesdiv {
 	height: 50%;
 	width: 25%;
+	padding-left: 10px;
 }
 
 #avgdiv {
 	height: 50%;
 	width: 25%;
+	padding-left: 10px;
 }
 
 #timeindiv {
 	height: 100%;
-	width: 75%;
+	width: calc(75% - 10px);
 	display: flex;
 	justify-content: center;
 	align-items: center;
