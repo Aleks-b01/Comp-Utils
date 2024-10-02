@@ -5,7 +5,7 @@ html, body {
 	width: 100%;
 }
 
-#topmenu {
+#headerDiv {
 	display: flex;
 	height: 15%;
 	width: 100%;
@@ -16,7 +16,7 @@ html, body {
 	align-items: center;
 }
 
-#tag {
+#header {
 	font-size: 100px;
 	color: white;
 	font-family: arial;
@@ -34,7 +34,7 @@ html, body {
 	align-items: space-evenly;
 }
 
-.menubuttons {
+.menuBtns {
 	height: 31.5%;
 	width: 46%;
 	font-size: 50px;
@@ -42,7 +42,7 @@ html, body {
 	margin-right: 1%;
 }
 
-#settings {
+#settingsBtn {
 	position: absolute;
 	height: 130px;
 	width: 130px;
@@ -54,13 +54,13 @@ html, body {
 	visibility: hidden;
 }
 
-#calcdiv {
+#calc {
 	display: none;
 	height: 100%;
 	width: 100%;
 }
 
-#timeindiv {
+#timeInputDiv {
 	display: flex;
 	height: 15%;
 	width: 100%;
@@ -70,7 +70,7 @@ html, body {
 	bottom: 0px;
 }
 
-#timein {
+#timeInput {
 	height: 95%;
 	width: 95%;
 	color: black;
@@ -79,7 +79,7 @@ html, body {
 	text-align: center;
 }
 
-#timesdiv {
+#timesDiv {
 	height: 42.5%;
 	width: 100%;
 	position: absolute;
@@ -87,7 +87,7 @@ html, body {
 	left: 20px;
 }
 
-#avgdiv {
+#avgDiv {
 	height: 57.5%;
 	width: 100%;
 	position: absolute;
@@ -95,7 +95,7 @@ html, body {
 	left: 20px;
 }
 
-#calcdivbuttons {
+#calcBtnsDiv {
 	width: 150px;
 	height: 70%;
 	display: flex;
@@ -105,17 +105,17 @@ html, body {
 	flex-wrap: wrap;
 }
 
-.penaltybutton {
+.penaltyBtns {
 	height: 150px;
 	width: 150px;
 }
 
-#calcmenubutton {
+#calcMenuBtn {
 	height: 150px;
 	width: 150px;
 }
 
-#settarget {
+#toSetTarget {
 	height: 150px;
 	width: 150px;
 }
@@ -125,10 +125,10 @@ html, body {
 	font-size: 70px;
 }
 
-#scramblediv {
+#scramble {
 	display: none;
 }
 
-#settingsmenu {
+#settings {
 	display: none;
 }

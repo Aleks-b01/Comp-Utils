@@ -3,26 +3,26 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener("keydown", handleShortcut);
 
 const menu = document.getElementById('menu');
+const calcBtn = document.getElementById('calcBtn');
 const calc = document.getElementById('calc');
-const calcdiv = document.getElementById('calcdiv');
+const scrambleBtn = document.getElementById('scrambleBtn');
 const scramble = document.getElementById('scramble');
-const scramblediv = document.getElementById('scramblediv');
+const algsBtn = document.getElementById('algsBtn');
 const algs = document.getElementById('algs');
-const algsdiv = document.getElementById('algsdiv');
+const helpersBtn = document.getElementById('helpersBtn');
 const helpers = document.getElementById('helpers');
-const helpersdiv = document.getElementById('helpersdiv');
 const competitiongroups = document.getElementById('competitiongroups');
 const wcalive = document.getElementById('wcalive');
+const settingsBtn = document.getElementById('settingsBtn');
 const settings = document.getElementById('settings');
-const settingsmenu = document.getElementById('settingsmenu');
-const calcmenubutton = document.getElementById('calcmenubutton');
-const scramblemenubutton = document.getElementById('scramblemenubutton');
-const algsmenubutton = document.getElementById('algsmenubutton');
-const helpersmenubutton = document.getElementById('helpersmenubutton');
-const settingsmenubutton = document.getElementById('settingsmenubutton');
+const calcMenuBtn = document.getElementById('calcMenuBtn');
+const scrambleMenuBtn = document.getElementById('scrambleMenuBtn');
+const algsMenuBtn = document.getElementById('algsMenuBtn');
+const helpersMenuBtn = document.getElementById('helpersMenuBtn');
+const settingsMenuBtn = document.getElementById('settingsMenuBtn');
 const css = document.getElementsByTagName('link');
 const lxa = document.getElementById('lxa');
-const hbody = document.getElementById('hbody');
+const bgColor = document.getElementById('bgColor');
 
 const screenwidth = screen.width;
 
@@ -37,19 +37,19 @@ window.onload = function() {
 };
 
 function handleShortcut(event) {
-	if (event.key === "Escape" && calcdiv.style.display === 'flex') {
+	if (event.key === "Escape" && calc.style.display === 'flex') {
 		event.preventDefault();
 		exitCalc();
-	} else if (event.key === "Escape" && scramblediv.style.display === 'flex') {
+	} else if (event.key === "Escape" && scramble.style.display === 'flex') {
 		event.preventDefault();
 		exitScramble();
-	} else if (event.key === "Escape" && algsdiv.style.display === 'flex') {
+	} else if (event.key === "Escape" && algs.style.display === 'flex') {
 		event.preventDefault();
 		exitAlgs();
 	} else if (event.key === "Escape" && helpersdiv.style.display === 'flex') {
 		event.preventDefault();
 		exitHelper();
-	} else if (event.key === "Escape" && settingsmenu.style.display === 'flex') {
+	} else if (event.key === "Escape" && settings.style.display === 'flex') {
 		event.preventDefault();
 		exitSettings();
 	}
@@ -57,45 +57,45 @@ function handleShortcut(event) {
 
 lxa.onclick = function() {
 	if (lxam == 1) {
-		hbody.style.backgroundColor = 'white';
+		bgColor.style.backgroundColor = 'white';
 		lxa.innerText = 'L';
 		lxam = 2;
 	} else if (lxam == 2) {
-		hbody.style.backgroundColor = 'rgb(47, 52, 56)';
+		bgColor.style.backgroundColor = 'rgb(47, 52, 56)';
 		lxa.innerText = 'D';
 		lxam = 1;
 	}
 }
 
-calc.onclick = function() {
+calcBtn.onclick = function() {
 	menu.style.display = 'none';
-	topmenu.style.display = 'none';
-	calcdiv.style.display = 'flex';
-	settings.style.visibility = 'collapse';
+	headerDiv.style.display = 'none';
+	calc.style.display = 'flex';
+	settingsBtn.style.visibility = 'collapse';
 	lxa.style.visibility = 'collapse';
 };
 
-scramble.onclick = function() {
+scrambleBtn.onclick = function() {
 	menu.style.display = 'none';
-	topmenu.style.display = 'none';
-	scramblediv.style.display = 'flex';
-	settings.style.visibility = 'collapse';
+	headerDiv.style.display = 'none';
+	scramble.style.display = 'flex';
+	settingsBtn.style.visibility = 'collapse';
 	lxa.style.visibility = 'collapse';
 };
 
-algs.onclick = function() {
+algsBtn.onclick = function() {
 	menu.style.display = 'none';
-	topmenu.style.display = 'none';
-	algsdiv.style.display = 'flex';
-	settings.style.visibility = 'collapse';
+	headerDiv.style.display = 'none';
+	algs.style.display = 'flex';
+	settingsBtn.style.visibility = 'collapse';
 	lxa.style.visibility = 'collapse';
 };
 
-helpers.onclick = function() {
+helpersBtn.onclick = function() {
 	menu.style.display = 'none';
-	topmenu.style.display = 'none';
-	helpersdiv.style.display = 'inline'; // will def change this when I'll actually build helpersdiv
-	settings.style.visibility = 'collapse';
+	headerDiv.style.display = 'none';
+	helpers.style.display = 'inline'; // will def change this when I'll actually build helpersdiv
+	settingsBtn.style.visibility = 'collapse';
 	lxa.style.visibility = 'collapse';
 };
 
@@ -107,73 +107,73 @@ wcalive.onclick = function() {
 	window.open("https://live.worldcubeassociation.org/", "_blank");
 };
 
-settings.onclick = function() {
+settingsBtn.onclick = function() {
 	menu.style.display = 'none';
-	topmenu.style.display = 'none';
-	settingsmenu.style.display = 'inline'; // will also change this when i build the settings
-	settingsmenubutton.style.visibility = 'visible';
-	settings.style.visibility = 'collapse';
+	headerDiv.style.display = 'none';
+	settings.style.display = 'inline'; // will also change this when i build the settings
+	settingsMenuBtn.style.visibility = 'visible';
+	settingsBtn.style.visibility = 'collapse';
 	lxa.style.visibility = 'collapse';
 };
 
-calcmenubutton.onclick = function() {
+calcMenuBtn.onclick = function() {
 	exitCalc();
 };
 
 function exitCalc() {
 	menu.style.display = 'flex';
-	topmenu.style.display = 'flex';
-	calcdiv.style.display = 'none';
-	settings.style.visibility = 'visible';
+	headerDiv.style.display = 'flex';
+	calc.style.display = 'none';
+	settingsBtn.style.visibility = 'visible';
 	lxa.style.visibility = 'visible';
 };
 
-scramblemenubutton.onclick = function() {
+scrambleMenuBtn.onclick = function() {
 	exitScramble();
 };
 
 function exitScramble() {
 	menu.style.display = 'flex';
-	topmenu.style.display = 'flex';
-	scramblediv.style.display = 'none';
-	settings.style.visibility = 'visible';
+	headerDiv.style.display = 'flex';
+	scramble.style.display = 'none';
+	settingsBtn.style.visibility = 'visible';
 	lxa.style.visibility = 'visible';
 };
-
-algsmenubutton.onclick = function() {
+/*
+algsMenuBtn.onclick = function() {
 	exitAlgs();
 };
 
 function exitAlgs() {
 	menu.style.display = 'flex';
-	topmenu.style.display = 'flex';
-	algsdiv.style.display = 'none';
-	settings.style.visibility = 'visible';
+	headerDiv.style.display = 'flex';
+	algsBtn.style.display = 'none';
+	settingsBtn.style.visibility = 'visible';
 	lxa.style.visibility = 'visible';
 };
 
-helpersmenubutton.onclick = function() {
+helpersMenuBtn.onclick = function() {
 	exitHelper();
 };
 
 function exitHelper() {
 	menu.style.display = 'flex';
-	topmenu.style.display = 'flex';
-	helpersdiv.style.display = 'none';
-	settingss.style.visibility = 'visible';
+	headerDiv.style.display = 'flex';
+	helpers.style.display = 'none';
+	settingsBtn.style.visibility = 'visible';
 	lxa.style.visibility = 'visible';
 };
-
-settingsmenubutton.onclick = function() {
+*/
+settingsMenuBtn.onclick = function() {
 	exitSettings();
 };
 
 function exitSettings() {
 	menu.style.display = 'flex';
-	topmenu.style.display = 'flex';
-	settingsmenu.style.display = 'none';
-	settingsmenubutton.style.visibility = 'collapse';
-	settings.style.visibility = 'visible';
+	headerDiv.style.display = 'flex';
+	settings.style.display = 'none';
+	settingsMenuBtn.style.visibility = 'collapse';
+	settingsBtn.style.visibility = 'visible';
 	lxa.style.visibility = 'visible';
 };
 });

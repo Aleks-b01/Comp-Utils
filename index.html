@@ -1,34 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link id="css" rel="stylesheet" href="index.css">
+	<link rel="stylesheet" href="index.css">
 	<title>Comp Utils</title>
 </head>
-<body id="hbody" style="background-color: rgb(47, 52, 56)">
+<body id="bgColor" style="background-color: rgb(47, 52, 56)">
 
-<div id="topmenu">
-	<h1 id="tag">Comp Utils</h1>
+<div id="headerDiv">
+	<h1 id="header">Comp Utils</h1>
 </div>
 <button id="lxa">D</button>
-<button id="settings">Settings</button>
+<button id="settingsBtn">Settings</button>
 <div id="menu">
-	<button class="menubuttons" id="calc">Average Calculator</button>
-	<button class="menubuttons" id="scramble">Scramble Generator</button>
-	<button class="menubuttons" id="algs">Algorithm Trainer</button>
-	<button class="menubuttons" id="helpers">Helper Tools</button>
-	<button class="menubuttons" id="competitiongroups">Competition Groups</button>
-	<button class="menubuttons" id="wcalive">WCA Live</button>
+	<button class="menuBtns" id="calcBtn">Average Calculator</button>
+	<button class="menuBtns" id="scrambleBtn">Scramble Generator</button>
+	<button class="menuBtns" id="algsBtn">Algorithm Trainer</button>
+	<button class="menuBtns" id="helpersBtn">Helper Tools</button>
+	<button class="menuBtns" id="competitiongroups">Competition Groups</button>
+	<button class="menuBtns" id="wcalive">WCA Live</button>
 </div>
 
-<div id="calcdiv">
-	<div id="timesdiv">
+<div id="calc">
+	<div id="timesDiv">
 		<h1 class="time" id="time1">1.  </h1>
 		<h1 class="time" id="time2">2.  </h1>
 		<h1 class="time" id="time3">3.  </h1>
 		<h1 class="time" id="time4">4.  </h1>
 		<h1 class="time" id="time5">5.  </h1>
 	</div>
-	<div id="avgdiv">
+	<div id="avgDiv">
 		<h1 class="time" id="best">Best:  </h1>
 		<h1 class="time" id="worst">Worst:  </h1>
 		<h1 class="time" id="bpa">BPA:  </h1>
@@ -36,59 +36,62 @@
 		<h1 class="time" id="target">Target:  </h1>
 		<h1 class="time" id="avg">Average:  </h1>
 	</div>
-	<div id="timeindiv">
-		<input id="timein"></input>
+	<div id="timeInputDiv">
+		<input id="timeInput"></input>
 	</div>
-	<div id="calcdivbuttons">
-		<button class="penaltybutton" id="deleteb">Delete</button>
-		<button class="penaltybutton" id="resetb">Reset</button>
-		<button id="calcmenubutton">Back</button>
-		<button class="penaltybutton" id="OK">OK</button>
-		<button class="penaltybutton" id="P2">+2</button>
-		<button class="penaltybutton" id="DNF">DNF</button>
+	<div id="calcBtnsDiv">
+		<button class="penaltyBtns" id="deleteBtn">Delete</button>
+		<button class="penaltyBtns" id="resetBtn">Reset</button>
+		<button id="calcMenuBtn">Back</button>
+		<button class="penaltyBtns" id="OK">OK</button>
+		<button class="penaltyBtns" id="P2">+2</button>
+		<button class="penaltyBtns" id="DNF">DNF</button>
 	</div>
-	<div id="confirmdiv">
-		<h1 id="confirmtext"></h1>
+	<div id="confirmPenalty">
+		<h1 id="confirmText"></h1>
 		<button id="cancel">Cancel</button>
 		<button id="yes">Yes</button>
 	</div>
-	<button id="settarget">Target</button>
+	<button id="toSetTarget">Target</button>
 </div>
-<div id="scramblediv">
-	<button id="scramblenext"></button>
-	<button id="scramblemenubutton"></button>
-	<button id="scrambleeventselector"></button>
-	<h1 id="scrambletext"></h1>
-	<div id="scrambleeventselectordiv">
-		<button class="scrambleevent" id="222">2x2</button>
-		<button class="scrambleevent" id="333">3x3</button>
-		<button class="scrambleevent" id="444">4x4</button>
-		<button class="scrambleevent" id="555">5x5</button>
-		<button class="scrambleevent" id="666">6x6</button>
-		<button class="scrambleevent" id="777">7x7</button>
-		<button class="scrambleevent" id="3oh">3x3 OH</button>
-		<button class="scrambleevent" id="3bld">3BLD</button>
-		<button class="scrambleevent" id="3fm">FMC</button>
-		<button class="scrambleevent" id="pyra">Pyraminx</button>
-		<button class="scrambleevent" id="skewb">Skewb</button>
-		<button class="scrambleevent" id="sq1">SQ1</button>
-		<button class="scrambleevent" id="mgmx">Mega</button>
-		<button class="scrambleevent" id="clock">Clock</button>
-		<button class="scrambleevent" id="4bld">4BLD</button>
-		<button class="scrambleevent" id="5bld">5BLD</button>
+<div id="scramble">
+	<button id="nextScramble"></button>
+	<button id="scrambleMenuBtn"></button>
+	<button id="scrambleSelectBtn"></button>
+	<h1 id="scrambleText"></h1>
+	<div id="scrambleSelect">
+		<button class="scrambleEvent" id="222">2x2</button>
+		<button class="scrambleEvent" id="333">3x3</button>
+		<button class="scrambleEvent" id="444">4x4</button>
+		<button class="scrambleEvent" id="555">5x5</button>
+		<button class="scrambleEvent" id="666">6x6</button>
+		<button class="scrambleEvent" id="777">7x7</button>
+		<button class="scrambleEvent" id="3oh">3x3 OH</button>
+		<button class="scrambleEvent" id="3bld">3BLD</button>
+		<button class="scrambleEvent" id="3fm">FMC</button>
+		<button class="scrambleEvent" id="pyra">Pyraminx</button>
+		<button class="scrambleEvent" id="skewb">Skewb</button>
+		<button class="scrambleEvent" id="sq1">SQ1</button>
+		<button class="scrambleEvent" id="mgmx">Mega</button>
+		<button class="scrambleEvent" id="clock">Clock</button>
+		<button class="scrambleEvent" id="4bld">4BLD</button>
+		<button class="scrambleEvent" id="5bld">5BLD</button>
 	</div>
 </div>
-<div id="settingsmenu">
-	<button id="settingsmenubutton"></button>
-	<button id="targetavgbutton"></button>
-	<h1 class="settingsh" id="avgcalcsettings">Average Calculator</h1>
-	<h1 class="time" id="currenttarget">Target average:  </h1>
-	<input id="targetin"></input>
-	<div id="format">
-		<button id="formatsh">ao5</button>
-		<div id="formatop">
-			<button id="formatop1">ao5</button>
-			<button id="formatop2">mo3</button>
+<div id="algs">
+	<button id="algsSelectBtn"></button>
+	<div id="algsSelect">
+		
+	</div>
+</div>
+<div id="settings">
+	<button id="settingsMenuBtn"></button>
+	<button id="toCalc"></button>
+	<h1 class="settingsHeader" id="settingsCalcHeader">Average Calculator</h1>
+	<h1 class="time" id="currentTarget">Target average:  </h1>
+	<input id="targetInput"></input>
+	<div id="formatSelect">
+		<button id="format">ao5</button>
 		</div>
 	</div>
 </div>

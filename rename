@@ -1,0 +1,38 @@
+hbody > bgColor
+topmenu > headerDiv
+tag > header
+settings > settingsBtn
+calc, scramble, algs, helpers > ...Btn
+calcdiv > calc
+timesdiv > timesDiv
+avgdiv > avgDiv
+timeindiv > timeInputDiv
+timein > timeInput
+calcbuttonsdiv > calcBtnsDiv
+deleteb > deleteBtn
+resetb > resetBtn
+calcmenubutton > calcMenuBtn
+confirmdiv > confirmPenalty
+confirmtext > confirmText
+settarget > toSetTraget
+scramblediv > scramble
+scramblenext > nextScramble
+scramblemenubutton > scrambleMenuBtn
+scrambleeventselector > scrambleSelectBtn
+scrambletext > scrambleText
+scrambleeventselectordiv > scrambleSelect
+algsdiv > algs
+settingsmenu > settings
+settingsmenubutton > settingsMenuBtn
+targetavgbutton > toCalc
+avgcalcsettings > settingsCalcHeader
+currenttarget > currentTarget
+targetin > targetInput
+format > formatSelect
+formatsh > format
+
+
+menubuttons > menuBtns
+penaltybutton > penaltyBtns
+scrambleevent > scrambleEvent
+settingsh > settingsHeader

@@ -2,202 +2,202 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener("keydown", handleShortcut);
 import { randomScrambleForEvent } from "https://cdn.cubing.net/js/cubing/scramble";
 
-const scramblediv = document.getElementById('scramblediv');
-const scramblenext = document.getElementById('scramblenext');
-const scrambleeventselector = document.getElementById('scrambleeventselector');
-const scrambletext = document.getElementById('scrambletext');
-const scrambleeventselectordiv = document.getElementById('scrambleeventselectordiv');
-const e222 = document.getElementById('222');
-const e333 = document.getElementById('333');
-const e444 = document.getElementById('444');
-const e555 = document.getElementById('555');
-const e666 = document.getElementById('666');
-const e777 = document.getElementById('777');
-const e3oh = document.getElementById('3oh');
-const e3bld = document.getElementById('3bld');
-const e3fm = document.getElementById('3fm');
-const epyra = document.getElementById('pyra');
-const eskewb = document.getElementById('skewb');
-const esq1 = document.getElementById('sq1');
-const emgmx = document.getElementById('mgmx');
-const eclock = document.getElementById('clock');
-const e4bld = document.getElementById('4bld');
-const e5bld = document.getElementById('5bld');
+const scramble = document.getElementById('scramble');
+const nextScramble = document.getElementById('nextScramble');
+const scrambleSelectBtn = document.getElementById('scrambleSelectBtn');
+const scrambleText = document.getElementById('scrambleText');
+const scrambleSelect = document.getElementById('scrambleSelect');
+const e222 = document.getElementById('e222');
+const e333 = document.getElementById('e333');
+const e444 = document.getElementById('e444');
+const e555 = document.getElementById('e555');
+const e666 = document.getElementById('e666');
+const e777 = document.getElementById('e777');
+const e3oh = document.getElementById('e3oh');
+const e3bld = document.getElementById('e3bld');
+const e3fm = document.getElementById('e3fm');
+const epyra = document.getElementById('epyra');
+const eskewb = document.getElementById('eskewb');
+const esq1 = document.getElementById('esq1');
+const emgmx = document.getElementById('emgmx');
+const eclock = document.getElementById('eclock');
+const e4bld = document.getElementById('e4bld');
+const e5bld = document.getElementById('e5bld');
 
 let currentevent = 3 // 33 = oh, 333 = bld, 3333 = fmc, 44/55 = 4/5bld, 8/9/10/11/12 = pyra/skewb/squan/mega/clock
 let scramble;
 
 function handleShortcut(event) {
-	if ((event.key === "Enter" || event.key === " ") && scramblediv.style.display === 'flex') {
+	if ((event.key === "Enter" || event.key === " ") && scramble.style.display === 'flex') {
 		event.preventDefault();
 		genScramble();
-	} else if (event.key === "Escape" && scrambleeventselectordiv.style.display === 'flex') {
+	} else if (event.key === "Escape" && scrambleSelect.style.display === 'flex') {
 		event.preventDefault();
-		scrambleeventselectordiv.style.display = 'none';
+		scrambleSelect.style.display = 'none';
 	}
 };
 
-scrambleeventselector.onclick = function() {
-	scrambleeventselectordiv.style.display = 'flex';
+scrambleSelectBtn.onclick = function() {
+	scrambleSelect.style.display = 'flex';
 };
 
 e222.onclick = function() {
 	if (currentevent != 2) {
 		currentevent = 2;
-		scrambleeventselectordiv.style.display = 'none';
+		scrambleSelect.style.display = 'none';
 		genScramble();
 	} else {
-		scrambleeventselectordiv.style.display = 'none';
+		scrambleSelect.style.display = 'none';
 	}
 };
 
 e333.onclick = function() {
 	if (currentevent != 3) {
 		currentevent = 3;
-		scrambleeventselectordiv.style.display = 'none';
+		scrambleSelect.style.display = 'none';
 		genScramble();
 	} else {
-		scrambleeventselectordiv.style.display = 'none';
+		scrambleSelect.style.display = 'none';
 	}
 };
 
 e444.onclick = function() {
 	if (currentevent != 4) {
 		currentevent = 4;
-		scrambleeventselectordiv.style.display = 'none';
+		scrambleSelect.style.display = 'none';
 		genScramble();
 	} else {
-		scrambleeventselectordiv.style.display = 'none';
+		scrambleSelect.style.display = 'none';
 	}
 };
 
 e555.onclick = function() {
 	if (currentevent != 5) {
 		currentevent = 5;
-		scrambleeventselectordiv.style.display = 'none';
+		scrambleSelect.style.display = 'none';
 		genScramble();
 	} else {
-		scrambleeventselectordiv.style.display = 'none';
+		scrambleSelect.style.display = 'none';
 	}
 };
 
 e666.onclick = function() {
 	if (currentevent != 6) {
 		currentevent = 6;
-		scrambleeventselectordiv.style.display = 'none';
+		scrambleSelect.style.display = 'none';
 		genScramble();
 	} else {
-		scrambleeventselectordiv.style.display = 'none';
+		scrambleSelect.style.display = 'none';
 	}
 };
 
 e777.onclick = function() {
 	if (currentevent != 7) {
 		currentevent = 7;
-		scrambleeventselectordiv.style.display = 'none';
+		scrambleSelect.style.display = 'none';
 		genScramble();
 	} else {
-		scrambleeventselectordiv.style.display = 'none';
+		scrambleSelect.style.display = 'none';
 	}
 };
 
 e3oh.onclick = function() {
 	if (currentevent != 33) {
 		currentevent = 33;
-		scrambleeventselectordiv.style.display = 'none';
+		scrambleSelect.style.display = 'none';
 		genScramble();
 	} else {
-		scrambleeventselectordiv.style.display = 'none';
+		scrambleSelect.style.display = 'none';
 	}
 };
 
 e3bld.onclick = function() {
 	if (currentevent != 333) {
 		currentevent = 333;
-		scrambleeventselectordiv.style.display = 'none';
+		scrambleSelect.style.display = 'none';
 		genScramble();
 	} else {
-		scrambleeventselectordiv.style.display = 'none';
+		scrambleSelect.style.display = 'none';
 	}
 };
 
 e3fm.onclick = function() {
 	if (currentevent != 3333) {
 		currentevent = 3333;
-		scrambleeventselectordiv.style.display = 'none';
+		scrambleSelect.style.display = 'none';
 		genScramble();
 	} else {
-		scrambleeventselectordiv.style.display = 'none';
+		scrambleSelect.style.display = 'none';
 	}
 };
 
 epyra.onclick = function() {
 	if (currentevent != 8) {
 		currentevent = 8;
-		scrambleeventselectordiv.style.display = 'none';
+		scrambleSelect.style.display = 'none';
 		genScramble();
 	} else {
-		scrambleeventselectordiv.style.display = 'none';
+		scrambleSelect.style.display = 'none';
 	}
 };
 
 eskewb.onclick = function() {
 	if (currentevent != 9) {
 		currentevent = 9;
-		scrambleeventselectordiv.style.display = 'none';
+		scrambleSelect.style.display = 'none';
 		genScramble();
 	} else {
-		scrambleeventselectordiv.style.display = 'none';
+		scrambleSelect.style.display = 'none';
 	}
 };
 
 esq1.onclick = function() {
 	if (currentevent != 10) {
 		currentevent = 10;
-		scrambleeventselectordiv.style.display = 'none';
+		scrambleSelect.style.display = 'none';
 		genScramble();
 	} else {
-		scrambleeventselectordiv.style.display = 'none';
+		scrambleSelect.style.display = 'none';
 	}
 };
 
 emgmx.onclick = function() {
 	if (currentevent != 11) {
 		currentevent = 11;
-		scrambleeventselectordiv.style.display = 'none';
+		scrambleSelect.style.display = 'none';
 		genScramble();
 	} else {
-		scrambleeventselectordiv.style.display = 'none';
+		scrambleSelect.style.display = 'none';
 	}
 };
 
 eclock.onclick = function() {
 	if (currentevent != 12) {
 		currentevent = 12;
-		scrambleeventselectordiv.style.display = 'none';
+		scrambleSelect.style.display = 'none';
 		genScramble();
 	} else {
-		scrambleeventselectordiv.style.display = 'none';
+		scrambleSelect.style.display = 'none';
 	}
 };
 
 e4bld.onclick = function() {
 	if (currentevent != 44) {
 		currentevent = 44;
-		scrambleeventselectordiv.style.display = 'none';
+		scrambleSelect.style.display = 'none';
 		genScramble();
 	} else {
-		scrambleeventselectordiv.style.display = 'none';
+		scrambleSelect.style.display = 'none';
 	}
 };
 
 e5bld.onclick = function() {
 	if (currentevent != 55) {
 		currentevent = 55;
-		scrambleeventselectordiv.style.display = 'none';
+		scrambleSelect.style.display = 'none';
 		genScramble();
 	} else {
-		scrambleeventselectordiv.style.display = 'none';
+		scrambleSelect.style.display = 'none';
 	}
 };
 
@@ -205,52 +205,52 @@ function genScramble() {
 	switch (currentevent) {
 		case 2:
 			scramble = await randomScrambleForEvent("222");
-			scrambletext.innerText = scramble;
+			scrambleText.innerText = scramble;
 		case 3:
 			scramble = await randomScrambleForEvent("333");
-			scrambletext.innerText = scramble;
+			scrambleText.innerText = scramble;
 		case 4:
 			scramble = await randomScrambleForEvent("444");
-			scrambletext.innerText = scramble;
+			scrambleText.innerText = scramble;
 		case 5:
 			scramble = await randomScrambleForEvent("555");
-			scrambletext.innerText = scramble;
+			scrambleText.innerText = scramble;
 		case 6:
 			scramble = await randomScrambleForEvent("666");
-			scrambletext.innerText = scramble;
+			scrambleText.innerText = scramble;
 		case 7:
 			scramble = await randomScrambleForEvent("777");
-			scrambletext.innerText = scramble;
+			scrambleText.innerText = scramble;
 		case 33:
 			scramble = await randomScrambleForEvent("333");
-			scrambletext.innerText = scramble;
+			scrambleText.innerText = scramble;
 		case 333:
 			scramble = await randomScrambleForEvent("333bf");
-			scrambletext.innerText = scramble;
+			scrambleText.innerText = scramble;
 		case 3333:
 			scramble = await randomScrambleForEvent("333fm");
-			scrambletext.innerText = scramble;
+			scrambleText.innerText = scramble;
 		case 8:
 			scramble = await randomScrambleForEvent("pyra");
-			scrambletext.innerText = scramble;
+			scrambleText.innerText = scramble;
 		case 9:
 			scramble = await randomScrambleForEvent("skewb");
-			scrambletext.innerText = scramble;
+			scrambleText.innerText = scramble;
 		case 10:
 			scramble = await randomScrambleForEvent("sq1");
-			scrambletext.innerText = scramble;
+			scrambleText.innerText = scramble;
 		case 11:
 			scramble = await randomScrambleForEvent("minx");
-			scrambletext.innerText = scramble;
+			scrambleText.innerText = scramble;
 		case 12:
 			scramble = await randomScrambleForEvent("clock");
-			scrambletext.innerText = scramble;
+			scrambleText.innerText = scramble;
 		case 44:
 			scramble = await randomScrambleForEvent("444bf");
-			scrambletext.innerText = scramble;
+			scrambleText.innerText = scramble;
 		case 55:
 			scramble = await randomScrambleForEvent("555bf");
-			scrambletext.innerText = scramble;
+			scrambleText.innerText = scramble;
 	}
 	;
 };

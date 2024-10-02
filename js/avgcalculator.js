@@ -6,30 +6,28 @@ const time2 = document.getElementById('time2');
 const time3 = document.getElementById('time3');
 const time4 = document.getElementById('time4');
 const time5 = document.getElementById('time5');
-const timein = document.getElementById('timein');
+const timeInput = document.getElementById('timeInput');
 const best = document.getElementById('best');
 const worst = document.getElementById('worst');
 const bpa = document.getElementById('bpa');
 const wpa = document.getElementById('wpa');
 const target = document.getElementById('target');
 const avg = document.getElementById('avg');
-const settarget = document.getElementById('settarget');
-const settingsmenu = document.getElementById('settingsmenu');
-const calcdiv = document.getElementById('calcdiv');
-const calcmenubutton = document.getElementById('calcmenubutton');
-const targetavgbutton = document.getElementById('targetavgbutton');
-const currenttarget = document.getElementById('currenttarget');
-const formatsh = document.getElementById('formatsh');
-const formatop = document.getElementById('formatop');
-const formatop1 = document.getElementById('formatop1');
-const formatop2 = document.getElementById('formatop2');
+const toSetTarget = document.getElementById('toSetTarget');
+const targetInput = document.getElementById('targetInput');
+const settings = document.getElementById('settings');
+const calc = document.getElementById('calc');
+const calcMenuBtn = document.getElementById('calcMenuBtn');
+const toCalc = document.getElementById('toCalc');
+const currentTraget = document.getElementById('currentTraget');
+const format = document.getElementById('format');
 const ok = document.getElementById('OK');
 const p2 = document.getElementById('P2');
 const dnf = document.getElementById('DNF');
-const resetb = document.getElementById('resetb');
-const deleteb = document.getElementById('deleteb');
-const confirmdiv = document.getElementById('confirmdiv');
-const confirmtext = document.getElementById('confirmtext');
+const resetBtn = document.getElementById('resetBtn');
+const deleteBtn = document.getElementById('deleteBtn');
+const confirmPenalty = document.getElementById('confirmPenalty');
+const confirmText = document.getElementById('confirmText');
 const cancel = document.getElementById('cancel');
 const yes = document.getElementById('yes');
 
@@ -60,30 +58,30 @@ let targetavgstring = '';
 let avgxbig = 0;
 let bestplace = 0;
 let worstplace = 0;
-let format = 1;
+let formatint = 1;
 let confirmint = 0;
 
 // Keybinds
 function handleShortcut(event) {
-	if (event.key === "Enter" && document.activeElement === timein && confirmint == 0) {
+	if (event.key === "Enter" && document.activeElement === timeInput && confirmint == 0) {
 		event.preventDefault();
 		getTime();
-	} else if (event.key === "Enter" && document.activeElement === targetin && confirmint == 0) {
+	} else if (event.key === "Enter" && document.activeElement === targetInput && confirmint == 0) {
 		event.preventDefault();
 		getTargetAVG();
-	} else if (event.ctrlKey && event.key === "1" && calcdiv.style.display === 'flex' && confirmint == 0) {
+	} else if (event.ctrlKey && event.key === "1" && calc.style.display === 'flex' && confirmint == 0) {
 		event.preventDefault();
 		timeOK();
-	} else if (event.ctrlKey && event.key === "2" && calcdiv.style.display === 'flex' && confirmint == 0) {
+	} else if (event.ctrlKey && event.key === "2" && calc.style.display === 'flex' && confirmint == 0) {
 		event.preventDefault();
 		timePlus2();
-	} else if (event.ctrlKey && event.key === "3" && calcdiv.style.display === 'flex' && confirmint == 0) {
+	} else if (event.ctrlKey && event.key === "3" && calc.style.display === 'flex' && confirmint == 0) {
 		event.preventDefault();
 		timeDNF();
-	} else if (event.ctrlKey && (event.key === "r" || event.key === "R") && calcdiv.style.display === 'flex' && confirmint == 0 && timecount != -1) {
+	} else if (event.ctrlKey && (event.key === "r" || event.key === "R") && calc.style.display === 'flex' && confirmint == 0 && timecount != -1) {
 		event.preventDefault();
 		resetconfirm();
-	} else if (event.ctrlKey && (event.key === "z" || event.key === "Z") && calcdiv.style.display === 'flex' && confirmint == 0 && timecount != -1) {
+	} else if (event.ctrlKey && (event.key === "z" || event.key === "Z") && calc.style.display === 'flex' && confirmint == 0 && timecount != -1) {
 		event.preventDefault();
 		deletesolveconfirm();
 	} else if (event.key === "Enter" && confirmint == 1) {
@@ -94,19 +92,19 @@ function handleShortcut(event) {
 		reset();
 	} else if (event.key === "Escape" && (confirmint == 1 || confirmint == 2)) {
 		confirmint = 0;
-		confirmdiv.style.display = 'none';
+		confirmPenalty.style.display = 'none';
 	}
 };
 
 // This is split into two functions to allow times to be entered in mm:ss.mc and mmssmc
 function getTime() {
-	tempstring = timein.value
+	tempstring = timeInput.value
 	if (tempstring.includes(":")) {
-		timein.value = '';
+		timeInput.value = '';
 		processTime();
-	} else if (!tempstring.includes(":") && !timein.value == '') {
-		timetemp = Number(timein.value);
-		timein.value = '';
+	} else if (!tempstring.includes(":") && !timeInput.value == '') {
+		timetemp = Number(timeInput.value);
+		timeInput.value = '';
 		processTime();
 	}
 };
@@ -144,9 +142,9 @@ function processTime() {
 
 // Chooses between ao5 and mo3 since they behave differently
 function pickFormat() {
-	if (format == 1) {
+	if (formatint == 1) {
 		drawTime();
-	} else if (format == 2) {
+	} else if (formatint == 2) {
 		drawTimeM();
 	}
 };
@@ -229,14 +227,14 @@ function drawTimeDNF() {
 };
 
 function getTargetAVG() {
-	tempstring = targetin.value;
+	tempstring = targetInput.value;
 	if (tempstring.includes(":")) {
-		targetin.value = '';
+		targetInput.value = '';
 		target.style.visibility = 'visible';
 		processTargetAVG();
 	} else {
-		timetemp = Number(targetin.value);
-		targetin.value = '';
+		timetemp = Number(targetInput.value);
+		targetInput.value = '';
 		target.style.visibility = 'visible';
 		processTargetAVG();
 	}
@@ -269,9 +267,9 @@ function processTargetAVG() {
 
 function drawTargetAVG() {
 	if (targetavgbig == 0) {
-		currenttarget.innerText = 'Target average:  ' + targetavg;
+		currentTraget.innerText = 'Target average:  ' + targetavg;
 	} else if (targetavgbig > 0) {
-		currenttarget.innerText = 'Target average:  ' + targetavgstring;
+		currentTraget.innerText = 'Target average:  ' + targetavgstring;
 	}
 };
 
@@ -697,21 +695,21 @@ dnf.onclick = function() {
 	timeDNF();
 };
 
-deleteb.onclick = function() {
+deleteBtn.onclick = function() {
 	if (timecount != -1) {
 		deletesolveconfirm();
 	}
 };
 
-resetb.onclick = function() {
+resetBtn.onclick = function() {
 	if (timecount != -1) {
 		resetconfirm();
 	}
 };
 
 function deletesolveconfirm() {
-	confirmtext.innerText = 'Do you really want to delete this solve?';
-	confirmdiv.style.display = 'flex';
+	confirmText.innerText = 'Do you really want to delete this solve?';
+	confirmPenalty.style.display = 'flex';
 	confirmint = 1;
 };
 
@@ -748,13 +746,13 @@ function deletesolve() {
 		time5.innerText = '5.  ';
 	}
 	drawTime();
-	confirmdiv.style.display = 'none';
+	confirmPenalty.style.display = 'none';
 	confirmint = 0;
 };
 
 function resetconfirm() {
-	confirmtext.innerText = 'Do you really want to reset these solves?';
-	confirmdiv.style.display = 'flex';
+	confirmText.innerText = 'Do you really want to reset these solves?';
+	confirmPenalty.style.display = 'flex';
 	confirmint = 2;
 };
 
@@ -777,12 +775,12 @@ function reset() {
 	target.innerText = "Target:  ";
 	avg.innerText = "Average:  ";
 	timecount = -1;
-	confirmdiv.style.display = 'none';
+	confirmPenalty.style.display = 'none';
 	confirmint = 0;
 };
 
 cancel.onclick = function() {
-	confirmdiv.style.display = 'none';
+	confirmPenalty.style.display = 'none';
 	confirmint = 0;
 };
 
@@ -796,27 +794,27 @@ yes.onclick = function() {
 	}
 };
 
-settarget.onclick = function() {
-	calcdiv.style.display = 'none';
-	settingsmenu.style.display = 'inline'; // ch
-	calcmenubutton.style.visibility = 'hidden';
-	targetavgbutton.style.visibility = 'visible';
+toSetTarget.onclick = function() {
+	calc.style.display = 'none';
+	settings.style.display = 'inline'; // ch
+	calcMenuBtn.style.visibility = 'hidden';
+	toCalc.style.visibility = 'visible';
 };
 
-targetavgbutton.onclick = function() {
-	targetavgbutton.style.visibility = 'hidden';
-	calcmenubutton.style.visibility = 'visible';
-	calcdiv.style.display = 'flex';
-	settingsmenu.style.display = 'none';
+toCalc.onclick = function() {
+	toCalc.style.visibility = 'hidden';
+	calcMenuBtn.style.visibility = 'visible';
+	calc.style.display = 'flex';
+	settings.style.display = 'none';
 };
-
-formatsh.onclick = function() {
+/*
+format.onclick = function() {
    formatop.style.display = 'inline';
 };
 
 formatop1.onclick = function() {
    format = 1;
-   formatsh.innerText = 'ao5';
+   format.innerText = 'ao5';
    formatop.style.display = 'none';
    time4.style.visibility = 'visible';
    time5.style.visibility = 'visible';
@@ -827,12 +825,12 @@ formatop1.onclick = function() {
 
 formatop2.onclick = function() {
    format = 2;
-   formatsh.innerText = 'mo3';
+   format.innerText = 'mo3';
    formatop.style.display = 'none';
    time4.style.visibility = 'hidden';
    time5.style.visibility = 'hidden';
    bpa.style.visibility = 'hidden';
    wpa.style.visibility = 'hidden';
    avg.innerText = 'Mean:  ';
-};
+};*/
 });
