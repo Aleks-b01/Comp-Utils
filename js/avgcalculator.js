@@ -34,7 +34,6 @@ const yes = document.getElementById('yes');
 let temp = 0;
 let tempstring = '';
 let timetemp = '';
-let timetempstring = '';
 let time = [];
 let timebig = [];
 let timebigcount = 0;
