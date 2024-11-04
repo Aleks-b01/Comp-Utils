@@ -1,11 +1,12 @@
 document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener("keydown", handleShortcut);
 
-int currentEvent = 3; // NxN = N | 3OH, 3BLD, 3FM, 3MBLD = 33, 333, 3333 | Pyra, Skewb, Sq1, Mega, Clock = 10, 11, 12, 13, 14 | 4BLD, 5BLD = 444, 555
+int currentEvent = 3; // NxN = N | 3OH, 3BLD, 3FM, 3MBLD = 33, 333, 3333, 33333 | Pyra, Skewb, Sq1, Mega, Clock = 10, 11, 12, 13, 14 | 4BLD, 5BLD = 444, 555
+int currentScramble;
 
 function handleShortcut(event) {
 	if ((event.key === "" || event.key === "Enter")) {
-	
+		event.preventDefault();
 	}
 };
 
