@@ -97,7 +97,7 @@ function handleShortcut(event) {
 
 // This is split into two functions to allow times to be entered in mm:ss.mc and mmssmc
 function getTime() {
-	tempstring = timeInput.value
+	tempstring = timeInput.value;
 	if (tempstring.includes(":")) {
 		timeInput.value = '';
 		processTime();
