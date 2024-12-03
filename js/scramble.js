@@ -39,6 +39,97 @@ function handleShortcut(event) {
 
 function scramble2() {
 	len = Math.floor(Math.random() * 4) + 8;
+	m1 = Math.floor(Math.random() * 3) + 1;
+	m2 = Math.floor(Math.random() * 3) + 1;
+	if (m1 == 1 && m2 == 1) {
+		currentScramble = "U";
+	} else if (m1 == 1 && m2 == 2) {
+		currentScramble = "U'";
+	} else if (m1 == 1 && m2 == 3) {
+		currentScramble = "U2";
+	} else if (m1 == 2 && m2 == 1) {
+		currentScramble = "R";
+	} else if (m1 == 2 && m2 == 2) {
+		currentScramble = "R'";
+	} else if (m1 == 2 && m2 == 3) {
+		currentScramble = "R2";
+	} else if (m1 == 3 && m2 == 1) {
+		currentScramble = "F";
+	} else if (m1 == 3 && m2 == 2) {
+		currentScramble = "F'";
+	} else if (m1 == 3 && m2 == 3) {
+		currentScramble = "F2";
+	}
+	len--;
+	while (len > 0) {
+		m2 = Math.floor(Math.random() * 3) + 1;
+		switch (m1) {
+			case 1:
+				m1 = Math.floor(Math.random() * 2) + 1;
+				if (m1 == 1 && m2 == 1) {
+					currentScramble = currentScramble + " R";
+					m1 = 2;
+				} else if (m1 == 1 && m2 == 2) {
+					currentScramble = currentScramble + " R'";
+					m1 = 2;
+				} else if (m1 == 1 && m2 == 3) {
+					currentScramble = currentScramble + " R2";
+					m1 = 2;
+				} else if (m1 == 2 && m2 == 1) {
+					currentScramble = currentScramble + " F";
+					m1 = 3;
+				} else if (m1 == 2 && m2 == 2) {
+					currentScramble = currentScramble + " F'";
+					m1 = 3;
+				} else if (m1 == 2 && m2 == 3) {
+					currentScramble = currentScramble + " F2";
+					m1 = 3;
+				}
+				break;
+			case 2:
+				m1 = Math.floor(Math.random() * 2) + 1;
+				if (m1 == 1 && m2 == 1) {
+					currentScramble = currentScramble + " U";
+				} else if (m1 == 1 && m2 == 2) {
+					currentScramble = currentScramble + " U'";
+				} else if (m1 == 1 && m2 == 3) {
+					currentScramble = currentScramble + " U2";
+				} else if (m1 == 2 && m2 == 1) {
+					currentScramble = currentScramble + " F";
+					m1 = 3;
+				} else if (m1 == 2 && m2 == 2) {
+					currentScramble = currentScramble + " F'";
+					m1 = 3;
+				} else if (m1 == 2 && m2 == 3) {
+					currentScramble = currentScramble + " F2";
+					m1 = 3;
+				}
+				break;
+			case 3:
+				m1 = Math.floor(Math.random() * 2) + 1;
+				if (m1 == 1 && m2 == 1) {
+					currentScramble = currentScramble + " U";
+				} else if (m1 == 1 && m2 == 2) {
+					currentScramble = currentScramble + " U'";
+				} else if (m1 == 1 && m2 == 3) {
+					currentScramble = currentScramble + " U2";
+				} else if (m1 == 2 && m2 == 1) {
+					currentScramble = currentScramble + " R";
+				} else if (m1 == 2 && m2 == 2) {
+					currentScramble = currentScramble + " R'";
+				} else if (m1 == 2 && m2 == 3) {
+					currentScramble = currentScramble + " R2";
+				}
+				break;
+		}
+		len--;
+	}
+	scrambleText.innerText = currentScramble;
+};
+
+function scramble3() {
+	/*
+	len = Math.floor(Math.random() * 5) + 17;
 	m1 = Math.floor(Math.random() * 6) + 1;
 	m2 = Math.floor(Math.random() * 3) + 1;
 	if (m1 == 1 && m2 == 1) {
@@ -76,101 +167,871 @@ function scramble2() {
 	} else if (m1 == 6 && m2 == 2) {
 		currentScramble = "B'";
 	} else if (m1 == 6 && m2 == 3) {
-		currentScramble == "B2";
+		currentScramble = "B2";
 	}
+	len--;
 	while (len > 0) {
 		m2 = Math.floor(Math.random() * 3) + 1;
 		switch (m1) {
 			case 1:
-			case 2:
-				m1 = Math.floor(Math.random() * 4) + 1;
+				m1 = Math.floor(Math.random() * 5) + 1;
 				if (m1 == 1 && m2 == 1) {
-					currentScramble.concat(" R");
+					currentScramble = currentScramble + " D";
+					m1 = 2;
 				} else if (m1 == 1 && m2 == 2) {
-					currentScramble.concat(" R'");
+					currentScramble = currentScramble + " D'";
+					m1 = 2;
 				} else if (m1 == 1 && m2 == 3) {
-					currentScramble.concat(" R2");
+					currentScramble = currentScramble + " D2";
+					m1 = 2;
 				} else if (m1 == 2 && m2 == 1) {
-					currentScramble.concat(" L");
+					currentScramble = currentScramble + " R";
+					m1 = 3;
 				} else if (m1 == 2 && m2 == 2) {
-					currentScramble.concat(" L'");
+					currentScramble = currentScramble + " R'";
+					m1 = 3;
 				} else if (m1 == 2 && m2 == 3) {
-					currentScramble.concat(" L2");
+					currentScramble = currentScramble + " R2";
+					m1 = 3;
 				} else if (m1 == 3 && m2 == 1) {
-					currentScramble.concat(" F");
+					currentScramble = currentScramble + " L";
+					m1 = 4;
 				} else if (m1 == 3 && m2 == 2) {
-					currentScramble.concat(" F'");
+					currentScramble = currentScramble + " L'";
+					m1 = 4;
 				} else if (m1 == 3 && m2 == 3) {
-					currentScramble.concat(" F2");
+					currentScramble = currentScramble + " L2";
+					m1 = 4;
 				} else if (m1 == 4 && m2 == 1) {
-					currentScramble.concat(" B");
+					currentScramble = currentScramble + " F";
+					m1 = 5;
 				} else if (m1 == 4 && m2 == 2) {
-					currentScramble.concat(" B'");
+					currentScramble = currentScramble + " F'";
+					m1 = 5;
 				} else if (m1 == 4 && m2 == 3) {
-					currentScramble.concat(" B2");
+					currentScramble = currentScramble + " F2";
+					m1 = 5;
+				} else if (m1 == 5 && m2 == 1) {
+					currentScramble = currentScramble + " B";
+					m1 = 6;
+				} else if (m1 == 5 && m2 == 2) {
+					currentScramble = currentScramble + " B'";
+					m1 = 6;
+				} else if (m1 == 5 && m2 == 3) {
+					currentScramble = currentScramble + " B2";
+					m1 = 6;
+				}
+				break;
+			case 2:
+				m1 = Math.floor(Math.random() * 5) + 1;
+				if (m1 == 1 && m2 == 1) {
+					currentScramble = currentScramble + " U";
+				} else if (m1 == 1 && m2 == 2) {
+					currentScramble = currentScramble + " U'";
+				} else if (m1 == 1 && m2 == 3) {
+					currentScramble = currentScramble + " U2";
+				} else if (m1 == 2 && m2 == 1) {
+					currentScramble = currentScramble + " R";
+					m1 = 3;
+				} else if (m1 == 2 && m2 == 2) {
+					currentScramble = currentScramble + " R'";
+					m1 = 3;
+				} else if (m1 == 2 && m2 == 3) {
+					currentScramble = currentScramble + " R2";
+					m1 = 3;
+				} else if (m1 == 3 && m2 == 1) {
+					currentScramble = currentScramble + " L";
+					m1 = 4;
+				} else if (m1 == 3 && m2 == 2) {
+					currentScramble = currentScramble + " L'";
+					m1 = 4;
+				} else if (m1 == 3 && m2 == 3) {
+					currentScramble = currentScramble + " L2";
+					m1 = 4;
+				} else if (m1 == 4 && m2 == 1) {
+					currentScramble = currentScramble + " F";
+					m1 = 5;
+				} else if (m1 == 4 && m2 == 2) {
+					currentScramble = currentScramble + " F'";
+					m1 = 5;
+				} else if (m1 == 4 && m2 == 3) {
+					currentScramble = currentScramble + " F2";
+					m1 = 5;
+				} else if (m1 == 5 && m2 == 1) {
+					currentScramble = currentScramble + " B";
+					m1 = 6;
+				} else if (m1 == 5 && m2 == 2) {
+					currentScramble = currentScramble + " B'";
+					m1 = 6;
+				} else if (m1 == 5 && m2 == 3) {
+					currentScramble = currentScramble + " B2";
+					m1 = 6;
 				}
 				break;
 			case 3:
-			case 4:
-				m1 = Math.floor(Math.random() * 4) + 1;
+				m1 = Math.floor(Math.random() * 5) + 1;
 				if (m1 == 1 && m2 == 1) {
-					currentScramble.concat(" U");
+					currentScramble = currentScramble + " U";
 				} else if (m1 == 1 && m2 == 2) {
-					currentScramble.concat(" U'");
+					currentScramble = currentScramble + " U'";
 				} else if (m1 == 1 && m2 == 3) {
-					currentScramble.concat(" U2");
+					currentScramble = currentScramble + " U2";
 				} else if (m1 == 2 && m2 == 1) {
-					currentScramble.concat(" D");
+					currentScramble = currentScramble + " D";
 				} else if (m1 == 2 && m2 == 2) {
-					currentScramble.concat(" D'");
+					currentScramble = currentScramble + " D'";
 				} else if (m1 == 2 && m2 == 3) {
-					currentScramble.concat(" D2");
+					currentScramble = currentScramble + " D2";
 				} else if (m1 == 3 && m2 == 1) {
-					currentScramble.concat(" F");
+					currentScramble = currentScramble + " L";
+					m1 = 4;
 				} else if (m1 == 3 && m2 == 2) {
-					currentScramble.concat(" F'");
+					currentScramble = currentScramble + " L'";
+					m1 = 4;
 				} else if (m1 == 3 && m2 == 3) {
-					currentScramble.concat(" F2");
+					currentScramble = currentScramble + " L2";
+					m1 = 4;
 				} else if (m1 == 4 && m2 == 1) {
-					currentScramble.concat(" B");
+					currentScramble = currentScramble + " F";
+					m1 = 5;
 				} else if (m1 == 4 && m2 == 2) {
-					currentScramble.concat(" B'");
+					currentScramble = currentScramble + " F'";
+					m1 = 5;
 				} else if (m1 == 4 && m2 == 3) {
-					currentScramble.concat(" B2");
+					currentScramble = currentScramble + " F2";
+					m1 = 5;
+				} else if (m1 == 5 && m2 == 1) {
+					currentScramble = currentScramble + " B";
+					m1 = 6;
+				} else if (m1 == 5 && m2 == 2) {
+					currentScramble = currentScramble + " B'";
+					m1 = 6;
+				} else if (m1 == 5 && m2 == 3) {
+					currentScramble = currentScramble + " B2";
+					m1 = 6;
+				}
+				break;
+			case 4:
+				m1 = Math.floor(Math.random() * 5) + 1;
+				if (m1 == 1 && m2 == 1) {
+					currentScramble = currentScramble + " U";
+				} else if (m1 == 1 && m2 == 2) {
+					currentScramble = currentScramble + " U'";
+				} else if (m1 == 1 && m2 == 3) {
+					currentScramble = currentScramble + " U2";
+				} else if (m1 == 2 && m2 == 1) {
+					currentScramble = currentScramble + " D";
+				} else if (m1 == 2 && m2 == 2) {
+					currentScramble = currentScramble + " D'";
+				} else if (m1 == 2 && m2 == 3) {
+					currentScramble = currentScramble + " D2";
+				} else if (m1 == 3 && m2 == 1) {
+					currentScramble = currentScramble + " R";
+				} else if (m1 == 3 && m2 == 2) {
+					currentScramble = currentScramble + " R'";
+				} else if (m1 == 3 && m2 == 3) {
+					currentScramble = currentScramble + " R2";
+				} else if (m1 == 4 && m2 == 1) {
+					currentScramble = currentScramble + " F";
+					m1 = 5;
+				} else if (m1 == 4 && m2 == 2) {
+					currentScramble = currentScramble + " F'";
+					m1 = 5;
+				} else if (m1 == 4 && m2 == 3) {
+					currentScramble = currentScramble + " F2";
+					m1 = 5;
+				} else if (m1 == 5 && m2 == 1) {
+					currentScramble = currentScramble + " B";
+					m1 = 6;
+				} else if (m1 == 5 && m2 == 2) {
+					currentScramble = currentScramble + " B'";
+					m1 = 6;
+				} else if (m1 == 5 && m2 == 3) {
+					currentScramble = currentScramble + " B2";
+					m1 = 6;
 				}
 				break;
 			case 5:
-			case 6:
-				m1 = Math.floor(Math.random() * 4) + 1;
+				m1 = Math.floor(Math.random() * 5) + 1;
 				if (m1 == 1 && m2 == 1) {
-					currentScramble.concat(" U");
+					currentScramble = currentScramble + " U";
 				} else if (m1 == 1 && m2 == 2) {
-					currentScramble.concat(" U'");
+					currentScramble = currentScramble + " U'";
 				} else if (m1 == 1 && m2 == 3) {
-					currentScramble.concat(" U2");
+					currentScramble = currentScramble + " U2";
 				} else if (m1 == 2 && m2 == 1) {
-					currentScramble.concat(" D");
+					currentScramble = currentScramble + " D";
 				} else if (m1 == 2 && m2 == 2) {
-					currentScramble.concat(" D'");
+					currentScramble = currentScramble + " D'";
 				} else if (m1 == 2 && m2 == 3) {
-					currentScramble.concat(" D2");
+					currentScramble = currentScramble + " D2";
 				} else if (m1 == 3 && m2 == 1) {
-					currentScramble.concat(" R");
+					currentScramble = currentScramble + " R";
 				} else if (m1 == 3 && m2 == 2) {
-					currentScramble.concat(" R'");
+					currentScramble = currentScramble + " R'";
 				} else if (m1 == 3 && m2 == 3) {
-					currentScramble.concat(" R2");
+					currentScramble = currentScramble + " R2";
 				} else if (m1 == 4 && m2 == 1) {
-					currentScramble.concat(" L");
+					currentScramble = currentScramble + " L";
 				} else if (m1 == 4 && m2 == 2) {
-					currentScramble.concat(" L'");
+					currentScramble = currentScramble + " L'";
 				} else if (m1 == 4 && m2 == 3) {
-					currentScramble.concat(" L2");
+					currentScramble = currentScramble + " L2";
+				} else if (m1 == 5 && m2 == 1) {
+					currentScramble = currentScramble + " B";
+					m1 = 6;
+				} else if (m1 == 5 && m2 == 2) {
+					currentScramble = currentScramble + " B'";
+					m1 = 6;
+				} else if (m1 == 5 && m2 == 3) {
+					currentScramble = currentScramble + " B2";
+					m1 = 6;
+				}
+				break;
+			case 6:
+				m1 = Math.floor(Math.random() * 5) + 1;
+				if (m1 == 1 && m2 == 1) {
+					currentScramble = currentScramble + " U";
+				} else if (m1 == 1 && m2 == 2) {
+					currentScramble = currentScramble + " U'";
+				} else if (m1 == 1 && m2 == 3) {
+					currentScramble = currentScramble + " U2";
+				} else if (m1 == 2 && m2 == 1) {
+					currentScramble = currentScramble + " D";
+				} else if (m1 == 2 && m2 == 2) {
+					currentScramble = currentScramble + " D'";
+				} else if (m1 == 2 && m2 == 3) {
+					currentScramble = currentScramble + " D2";
+				} else if (m1 == 3 && m2 == 1) {
+					currentScramble = currentScramble + " R";
+				} else if (m1 == 3 && m2 == 2) {
+					currentScramble = currentScramble + " R'";
+				} else if (m1 == 3 && m2 == 3) {
+					currentScramble = currentScramble + " R2";
+				} else if (m1 == 4 && m2 == 1) {
+					currentScramble = currentScramble + " L";
+				} else if (m1 == 4 && m2 == 2) {
+					currentScramble = currentScramble + " L'";
+				} else if (m1 == 4 && m2 == 3) {
+					currentScramble = currentScramble + " L2";
+				} else if (m1 == 5 && m2 == 1) {
+					currentScramble = currentScramble + " F";
+				} else if (m1 == 5 && m2 == 2) {
+					currentScramble = currentScramble + " F'";
+				} else if (m1 == 5 && m2 == 3) {
+					currentScramble = currentScramble + " F2";
 				}
 				break;
 		}
 		len--;
 	}
+	scrambleText.innerText = currentScramble;
+	*/
+	/*
+	len = Math.floor(Math.random() * 2) + 8;
+	m1 = Math.floor(Math.random() * 6) + 1;
+	m2 = Math.floor(Math.random() * 7) + 1;
+	if (m1 == 1 && m2 < 4) {
+		currentScramble = "U";
+	} else if (m1 == 1 && m2 < 7 && m2 > 3) {
+		currentScramble = "U'";
+	} else if (m1 == 1 && m2 == 7) {
+		currentScramble = "U2";
+	} else if (m1 == 2 && m2 < 4) {
+		currentScramble = "D";
+	} else if (m1 == 2 && m2 < 7 && m2 > 3) {
+		currentScramble = "D'";
+	} else if (m1 == 2 && m2 == 7) {
+		currentScramble = "D2";
+	} else if (m1 == 3) {
+		currentScramble = "R2";
+	} else if (m1 == 4) {
+		currentScramble = "L2";
+	} else if (m1 == 5) {
+		currentScramble = "F2";
+	} else if (m1 == 6) {
+		currentScramble = "B2";
+	}
+	while (len > 0) {
+		m2 = Math.floor(Math.random() * 7) + 1;
+		switch (m1) {
+			case 1:
+				m1 = Math.floor(Math.random() * 5) + 1;
+				if (m1 == 1 && m2 < 4) {
+					currentScramble = currentScramble + " D";
+					m1 = 2;
+				} else if (m1 == 1 && m2 < 7 && m2 > 3) {
+					currentScramble = currentScramble + " D'";
+					m1 = 2;
+				} else if (m1 == 1 && m2 == 7) {
+					currentScramble = currentScramble + " D2";
+					m1 = 2;
+				} else if (m1 == 2) {
+					currentScramble = currentScramble + " R2";
+					m1 = 3;
+				} else if (m1 == 3) {
+					currentScramble = currentScramble + " L2";
+					m1 = 4;
+				} else if (m1 == 4) {
+					currentScramble = currentScramble + " F2";
+					m1 = 5;
+				} else if (m1 == 5) {
+					currentScramble = currentScramble + " B2";
+					m1 = 6;
+				}
+				break;
+			case 2:
+				m1 = Math.floor(Math.random() * 5) + 1;
+				if (m1 == 1 && m2 < 4) {
+					currentScramble = currentScramble + " U";
+				} else if (m1 == 1 && m2 < 7 && m2 > 3) {
+					currentScramble = currentScramble + " U'";
+				} else if (m1 == 1 && m2 == 7) {
+					currentScramble = currentScramble + " U2";
+				} else if (m1 == 2) {
+					currentScramble = currentScramble + " R2";
+					m1 = 3;
+				} else if (m1 == 3) {
+					currentScramble = currentScramble + " L2";
+					m1 = 4;
+				} else if (m1 == 4) {
+					currentScramble = currentScramble + " F2";
+					m1 = 5;
+				} else if (m1 == 5) {
+					currentScramble = currentScramble + " B2";
+					m1 = 6;
+				}
+				break;
+			case 3:
+				m1 = Math.floor(Math.random() * 5) + 1;
+				if (m1 == 1 && m2 < 4) {
+					currentScramble = currentScramble + " U";
+				} else if (m1 == 1 && m2 < 7 && m2 > 3) {
+					currentScramble = currentScramble + " U'";
+				} else if (m1 == 1 && m2 == 7) {
+					currentScramble = currentScramble + " U2";
+				} else if (m1 == 2 && m2 < 4) {
+					currentScramble = currentScramble + " D";
+				} else if (m1 == 2 && m2 < 7 && m2 > 3) {
+					currentScramble = currentScramble + " D'";
+				} else if (m1 == 2 && m2 == 7) {
+					currentScramble = currentScramble + " D2";
+				} else if (m1 == 3) {
+					currentScramble = currentScramble + " L2";
+					m1 = 4;
+				} else if (m1 == 4) {
+					currentScramble = currentScramble + " F2";
+					m1 = 5;
+				} else if (m1 == 5) {
+					currentScramble = currentScramble + " B2";
+					m1 = 6;
+				}
+				break;
+			case 4:
+				m1 = Math.floor(Math.random() * 5) + 1;
+				if (m1 == 1 && m2 < 4) {
+					currentScramble = currentScramble + " U";
+				} else if (m1 == 1 && m2 < 7 && m2 > 3) {
+					currentScramble = currentScramble + " U'";
+				} else if (m1 == 1 && m2 == 7) {
+					currentScramble = currentScramble + " U2";
+				} else if (m1 == 2 && m2 < 4) {
+					currentScramble = currentScramble + " D";
+				} else if (m1 == 2 && m2 < 7 && m2 > 3) {
+					currentScramble = currentScramble + " D'";
+				} else if (m1 == 2 && m2 == 7) {
+					currentScramble = currentScramble + " D2";
+				} else if (m1 == 3) {
+					currentScramble = currentScramble + " R2";
+				} else if (m1 == 4) {
+					currentScramble = currentScramble + " F2";
+					m1 = 5;
+				} else if (m1 == 5) {
+					currentScramble = currentScramble + " B2";
+					m1 = 6;
+				}
+				break;
+			case 5:
+				m1 = Math.floor(Math.random() * 5) + 1;
+				if (m1 == 1 && m2 < 4) {
+					currentScramble = currentScramble + " U";
+				} else if (m1 == 1 && m2 < 7 && m2 > 3) {
+					currentScramble = currentScramble + " U'";
+				} else if (m1 == 1 && m2 == 7) {
+					currentScramble = currentScramble + " U2";
+				} else if (m1 == 2 && m2 < 4) {
+					currentScramble = currentScramble + " D";
+				} else if (m1 == 2 && m2 < 7 && m2 > 3) {
+					currentScramble = currentScramble + " D'";
+				} else if (m1 == 2 && m2 == 7) {
+					currentScramble = currentScramble + " D2";
+				} else if (m1 == 3) {
+					currentScramble = currentScramble + " R2";
+				} else if (m1 == 4) {
+					currentScramble = currentScramble + " L2";
+				} else if (m1 == 5) {
+					currentScramble = currentScramble + " B2";
+					m1 = 6;
+				}
+				break;
+			case 6:
+				m1 = Math.floor(Math.random() * 5) + 1;
+				if (m1 == 1 && m2 < 4) {
+					currentScramble = currentScramble + " U";
+				} else if (m1 == 1 && m2 < 7 && m2 > 3) {
+					currentScramble = currentScramble + " U'";
+				} else if (m1 == 1 && m2 == 7) {
+					currentScramble = currentScramble + " U2";
+				} else if (m1 == 2 && m2 < 4) {
+					currentScramble = currentScramble + " D";
+				} else if (m1 == 2 && m2 < 7 && m2 > 3) {
+					currentScramble = currentScramble + " D'";
+				} else if (m1 == 2 && m2 == 7) {
+					currentScramble = currentScramble + " D2";
+				} else if (m1 == 3) {
+					currentScramble = currentScramble + " R2";
+				} else if (m1 == 4) {
+					currentScramble = currentScramble + " L2";
+				} else if (m1 == 5) {
+					currentScramble = currentScramble + " F2";
+				}
+				break;
+		}
+		len--;
+	}
+	len = Math.floor(Math.random() * 5) + 8;
+	while (len > 0) {
+		m2 = Math.floor(Math.random() * 3) + 1;
+		switch (m1) {
+			case 1:
+				m1 = Math.floor(Math.random() * 5) + 1;
+				if (m1 == 1 && m2 == 1) {
+					currentScramble = currentScramble + " D";
+					m1 = 2;
+				} else if (m1 == 1 && m2 == 2) {
+					currentScramble = currentScramble + " D'";
+					m1 = 2;
+				} else if (m1 == 1 && m2 == 3) {
+					currentScramble = currentScramble + " D2";
+					m1 = 2;
+				} else if (m1 == 2 && m2 == 1) {
+					currentScramble = currentScramble + " R";
+					m1 = 3;
+				} else if (m1 == 2 && m2 == 2) {
+					currentScramble = currentScramble + " R'";
+					m1 = 3;
+				} else if (m1 == 2 && m2 == 3) {
+					currentScramble = currentScramble + " R2";
+					m1 = 3;
+				} else if (m1 == 3 && m2 == 1) {
+					currentScramble = currentScramble + " L";
+					m1 = 4;
+				} else if (m1 == 3 && m2 == 2) {
+					currentScramble = currentScramble + " L'";
+					m1 = 4;
+				} else if (m1 == 3 && m2 == 3) {
+					currentScramble = currentScramble + " L2";
+					m1 = 4;
+				} else if (m1 == 4 && m2 == 1) {
+					currentScramble = currentScramble + " F";
+					m1 = 5;
+				} else if (m1 == 4 && m2 == 2) {
+					currentScramble = currentScramble + " F'";
+					m1 = 5;
+				} else if (m1 == 4 && m2 == 3) {
+					currentScramble = currentScramble + " F2";
+					m1 = 5;
+				} else if (m1 == 5 && m2 == 1) {
+					currentScramble = currentScramble + " B";
+					m1 = 6;
+				} else if (m1 == 5 && m2 == 2) {
+					currentScramble = currentScramble + " B'";
+					m1 = 6;
+				} else if (m1 == 5 && m2 == 3) {
+					currentScramble = currentScramble + " B2";
+					m1 = 6;
+				}
+				break;
+			case 2:
+				m1 = Math.floor(Math.random() * 5) + 1;
+				if (m1 == 1 && m2 == 1) {
+					currentScramble = currentScramble + " U";
+				} else if (m1 == 1 && m2 == 2) {
+					currentScramble = currentScramble + " U'";
+				} else if (m1 == 1 && m2 == 3) {
+					currentScramble = currentScramble + " U2";
+				} else if (m1 == 2 && m2 == 1) {
+					currentScramble = currentScramble + " R";
+					m1 = 3;
+				} else if (m1 == 2 && m2 == 2) {
+					currentScramble = currentScramble + " R'";
+					m1 = 3;
+				} else if (m1 == 2 && m2 == 3) {
+					currentScramble = currentScramble + " R2";
+					m1 = 3;
+				} else if (m1 == 3 && m2 == 1) {
+					currentScramble = currentScramble + " L";
+					m1 = 4;
+				} else if (m1 == 3 && m2 == 2) {
+					currentScramble = currentScramble + " L'";
+					m1 = 4;
+				} else if (m1 == 3 && m2 == 3) {
+					currentScramble = currentScramble + " L2";
+					m1 = 4;
+				} else if (m1 == 4 && m2 == 1) {
+					currentScramble = currentScramble + " F";
+					m1 = 5;
+				} else if (m1 == 4 && m2 == 2) {
+					currentScramble = currentScramble + " F'";
+					m1 = 5;
+				} else if (m1 == 4 && m2 == 3) {
+					currentScramble = currentScramble + " F2";
+					m1 = 5;
+				} else if (m1 == 5 && m2 == 1) {
+					currentScramble = currentScramble + " B";
+					m1 = 6;
+				} else if (m1 == 5 && m2 == 2) {
+					currentScramble = currentScramble + " B'";
+					m1 = 6;
+				} else if (m1 == 5 && m2 == 3) {
+					currentScramble = currentScramble + " B2";
+					m1 = 6;
+				}
+				break;
+			case 3:
+				m1 = Math.floor(Math.random() * 5) + 1;
+				if (m1 == 1 && m2 == 1) {
+					currentScramble = currentScramble + " U";
+				} else if (m1 == 1 && m2 == 2) {
+					currentScramble = currentScramble + " U'";
+				} else if (m1 == 1 && m2 == 3) {
+					currentScramble = currentScramble + " U2";
+				} else if (m1 == 2 && m2 == 1) {
+					currentScramble = currentScramble + " D";
+				} else if (m1 == 2 && m2 == 2) {
+					currentScramble = currentScramble + " D'";
+				} else if (m1 == 2 && m2 == 3) {
+					currentScramble = currentScramble + " D2";
+				} else if (m1 == 3 && m2 == 1) {
+					currentScramble = currentScramble + " L";
+					m1 = 4;
+				} else if (m1 == 3 && m2 == 2) {
+					currentScramble = currentScramble + " L'";
+					m1 = 4;
+				} else if (m1 == 3 && m2 == 3) {
+					currentScramble = currentScramble + " L2";
+					m1 = 4;
+				} else if (m1 == 4 && m2 == 1) {
+					currentScramble = currentScramble + " F";
+					m1 = 5;
+				} else if (m1 == 4 && m2 == 2) {
+					currentScramble = currentScramble + " F'";
+					m1 = 5;
+				} else if (m1 == 4 && m2 == 3) {
+					currentScramble = currentScramble + " F2";
+					m1 = 5;
+				} else if (m1 == 5 && m2 == 1) {
+					currentScramble = currentScramble + " B";
+					m1 = 6;
+				} else if (m1 == 5 && m2 == 2) {
+					currentScramble = currentScramble + " B'";
+					m1 = 6;
+				} else if (m1 == 5 && m2 == 3) {
+					currentScramble = currentScramble + " B2";
+					m1 = 6;
+				}
+				break;
+			case 4:
+				m1 = Math.floor(Math.random() * 5) + 1;
+				if (m1 == 1 && m2 == 1) {
+					currentScramble = currentScramble + " U";
+				} else if (m1 == 1 && m2 == 2) {
+					currentScramble = currentScramble + " U'";
+				} else if (m1 == 1 && m2 == 3) {
+					currentScramble = currentScramble + " U2";
+				} else if (m1 == 2 && m2 == 1) {
+					currentScramble = currentScramble + " D";
+				} else if (m1 == 2 && m2 == 2) {
+					currentScramble = currentScramble + " D'";
+				} else if (m1 == 2 && m2 == 3) {
+					currentScramble = currentScramble + " D2";
+				} else if (m1 == 3 && m2 == 1) {
+					currentScramble = currentScramble + " R";
+				} else if (m1 == 3 && m2 == 2) {
+					currentScramble = currentScramble + " R'";
+				} else if (m1 == 3 && m2 == 3) {
+					currentScramble = currentScramble + " R2";
+				} else if (m1 == 4 && m2 == 1) {
+					currentScramble = currentScramble + " F";
+					m1 = 5;
+				} else if (m1 == 4 && m2 == 2) {
+					currentScramble = currentScramble + " F'";
+					m1 = 5;
+				} else if (m1 == 4 && m2 == 3) {
+					currentScramble = currentScramble + " F2";
+					m1 = 5;
+				} else if (m1 == 5 && m2 == 1) {
+					currentScramble = currentScramble + " B";
+					m1 = 6;
+				} else if (m1 == 5 && m2 == 2) {
+					currentScramble = currentScramble + " B'";
+					m1 = 6;
+				} else if (m1 == 5 && m2 == 3) {
+					currentScramble = currentScramble + " B2";
+					m1 = 6;
+				}
+				break;
+			case 5:
+				m1 = Math.floor(Math.random() * 5) + 1;
+				if (m1 == 1 && m2 == 1) {
+					currentScramble = currentScramble + " U";
+				} else if (m1 == 1 && m2 == 2) {
+					currentScramble = currentScramble + " U'";
+				} else if (m1 == 1 && m2 == 3) {
+					currentScramble = currentScramble + " U2";
+				} else if (m1 == 2 && m2 == 1) {
+					currentScramble = currentScramble + " D";
+				} else if (m1 == 2 && m2 == 2) {
+					currentScramble = currentScramble + " D'";
+				} else if (m1 == 2 && m2 == 3) {
+					currentScramble = currentScramble + " D2";
+				} else if (m1 == 3 && m2 == 1) {
+					currentScramble = currentScramble + " R";
+				} else if (m1 == 3 && m2 == 2) {
+					currentScramble = currentScramble + " R'";
+				} else if (m1 == 3 && m2 == 3) {
+					currentScramble = currentScramble + " R2";
+				} else if (m1 == 4 && m2 == 1) {
+					currentScramble = currentScramble + " L";
+				} else if (m1 == 4 && m2 == 2) {
+					currentScramble = currentScramble + " L'";
+				} else if (m1 == 4 && m2 == 3) {
+					currentScramble = currentScramble + " L2";
+				} else if (m1 == 5 && m2 == 1) {
+					currentScramble = currentScramble + " B";
+					m1 = 6;
+				} else if (m1 == 5 && m2 == 2) {
+					currentScramble = currentScramble + " B'";
+					m1 = 6;
+				} else if (m1 == 5 && m2 == 3) {
+					currentScramble = currentScramble + " B2";
+					m1 = 6;
+				}
+				break;
+			case 6:
+				m1 = Math.floor(Math.random() * 5) + 1;
+				if (m1 == 1 && m2 == 1) {
+					currentScramble = currentScramble + " U";
+				} else if (m1 == 1 && m2 == 2) {
+					currentScramble = currentScramble + " U'";
+				} else if (m1 == 1 && m2 == 3) {
+					currentScramble = currentScramble + " U2";
+				} else if (m1 == 2 && m2 == 1) {
+					currentScramble = currentScramble + " D";
+				} else if (m1 == 2 && m2 == 2) {
+					currentScramble = currentScramble + " D'";
+				} else if (m1 == 2 && m2 == 3) {
+					currentScramble = currentScramble + " D2";
+				} else if (m1 == 3 && m2 == 1) {
+					currentScramble = currentScramble + " R";
+				} else if (m1 == 3 && m2 == 2) {
+					currentScramble = currentScramble + " R'";
+				} else if (m1 == 3 && m2 == 3) {
+					currentScramble = currentScramble + " R2";
+				} else if (m1 == 4 && m2 == 1) {
+					currentScramble = currentScramble + " L";
+				} else if (m1 == 4 && m2 == 2) {
+					currentScramble = currentScramble + " L'";
+				} else if (m1 == 4 && m2 == 3) {
+					currentScramble = currentScramble + " L2";
+				} else if (m1 == 5 && m2 == 1) {
+					currentScramble = currentScramble + " F";
+				} else if (m1 == 5 && m2 == 2) {
+					currentScramble = currentScramble + " F'";
+				} else if (m1 == 5 && m2 == 3) {
+					currentScramble = currentScramble + " F2";
+				}
+				break;
+		}
+		len--;
+	}
+	scrambleText.innerText = currentScramble;
+	*/
+	len = Math.floor(Math.random() * 2) + 8;
+	m1 = Math.floor(Math.random() * 6) + 1;
+	m2 = Math.floor(Math.random() * 3) + 1;
+	temp = Math.floor(Math.random() * 3) + 1;
+	if (temp == 1) {
+		if (m1 == 1 && m2 < 4) {
+			currentScramble = "U";
+		} else if (m1 == 1 && m2 < 7 && m2 > 3) {
+			currentScramble = "U'";
+		} else if (m1 == 1 && m2 == 7) {
+			currentScramble = "U2";
+		} else if (m1 == 2 && m2 < 4) {
+			currentScramble = "D";
+		} else if (m1 == 2 && m2 < 7 && m2 > 3) {
+			currentScramble = "D'";
+		} else if (m1 == 2 && m2 == 7) {
+			currentScramble = "D2";
+		} else if (m1 == 3) {
+			currentScramble = "R2";
+		} else if (m1 == 4) {
+			currentScramble = "L2";
+		} else if (m1 == 5) {
+			currentScramble = "F2";
+		} else if (m1 == 6) {
+			currentScramble = "B2";
+		}
+		while (len > 0) {
+			m2 = Math.floor(Math.random() * 7) + 1;
+			switch (m1) {
+				case 1:
+					m1 = Math.floor(Math.random() * 5) + 1;
+					if (m1 == 1 && m2 < 4) {
+						currentScramble = currentScramble + " D";
+						m1 = 2;
+					} else if (m1 == 1 && m2 < 7 && m2 > 3) {
+						currentScramble = currentScramble + " D'";
+						m1 = 2;
+					} else if (m1 == 1 && m2 == 7) {
+						currentScramble = currentScramble + " D2";
+						m1 = 2;
+					} else if (m1 == 2) {
+						currentScramble = currentScramble + " R2";
+						m1 = 3;
+					} else if (m1 == 3) {
+						currentScramble = currentScramble + " L2";
+						m1 = 4;
+					} else if (m1 == 4) {
+						currentScramble = currentScramble + " F2";
+						m1 = 5;
+					} else if (m1 == 5) {
+						currentScramble = currentScramble + " B2";
+						m1 = 6;
+					}
+					break;
+				case 2:
+					m1 = Math.floor(Math.random() * 5) + 1;
+					if (m1 == 1 && m2 < 4) {
+						currentScramble = currentScramble + " U";
+					} else if (m1 == 1 && m2 < 7 && m2 > 3) {
+						currentScramble = currentScramble + " U'";
+					} else if (m1 == 1 && m2 == 7) {
+						currentScramble = currentScramble + " U2";
+					} else if (m1 == 2) {
+						currentScramble = currentScramble + " R2";
+						m1 = 3;
+					} else if (m1 == 3) {
+						currentScramble = currentScramble + " L2";
+						m1 = 4;
+					} else if (m1 == 4) {
+						currentScramble = currentScramble + " F2";
+						m1 = 5;
+					} else if (m1 == 5) {
+						currentScramble = currentScramble + " B2";
+						m1 = 6;
+					}
+					break;
+				case 3:
+					m1 = Math.floor(Math.random() * 5) + 1;
+					if (m1 == 1 && m2 < 4) {
+						currentScramble = currentScramble + " U";
+					} else if (m1 == 1 && m2 < 7 && m2 > 3) {
+						currentScramble = currentScramble + " U'";
+					} else if (m1 == 1 && m2 == 7) {
+						currentScramble = currentScramble + " U2";
+					} else if (m1 == 2 && m2 < 4) {
+						currentScramble = currentScramble + " D";
+					} else if (m1 == 2 && m2 < 7 && m2 > 3) {
+						currentScramble = currentScramble + " D'";
+					} else if (m1 == 2 && m2 == 7) {
+						currentScramble = currentScramble + " D2";
+					} else if (m1 == 3) {
+						currentScramble = currentScramble + " L2";
+						m1 = 4;
+					} else if (m1 == 4) {
+						currentScramble = currentScramble + " F2";
+						m1 = 5;
+					} else if (m1 == 5) {
+						currentScramble = currentScramble + " B2";
+						m1 = 6;
+					}
+					break;
+				case 4:
+					m1 = Math.floor(Math.random() * 5) + 1;
+					if (m1 == 1 && m2 < 4) {
+						currentScramble = currentScramble + " U";
+					} else if (m1 == 1 && m2 < 7 && m2 > 3) {
+						currentScramble = currentScramble + " U'";
+					} else if (m1 == 1 && m2 == 7) {
+						currentScramble = currentScramble + " U2";
+					} else if (m1 == 2 && m2 < 4) {
+						currentScramble = currentScramble + " D";
+					} else if (m1 == 2 && m2 < 7 && m2 > 3) {
+						currentScramble = currentScramble + " D'";
+					} else if (m1 == 2 && m2 == 7) {
+						currentScramble = currentScramble + " D2";
+					} else if (m1 == 3) {
+						currentScramble = currentScramble + " R2";
+					} else if (m1 == 4) {
+						currentScramble = currentScramble + " F2";
+						m1 = 5;
+					} else if (m1 == 5) {
+						currentScramble = currentScramble + " B2";
+						m1 = 6;
+					}
+					break;
+				case 5:
+					m1 = Math.floor(Math.random() * 5) + 1;
+					if (m1 == 1 && m2 < 4) {
+						currentScramble = currentScramble + " U";
+					} else if (m1 == 1 && m2 < 7 && m2 > 3) {
+						currentScramble = currentScramble + " U'";
+					} else if (m1 == 1 && m2 == 7) {
+						currentScramble = currentScramble + " U2";
+					} else if (m1 == 2 && m2 < 4) {
+						currentScramble = currentScramble + " D";
+					} else if (m1 == 2 && m2 < 7 && m2 > 3) {
+						currentScramble = currentScramble + " D'";
+					} else if (m1 == 2 && m2 == 7) {
+						currentScramble = currentScramble + " D2";
+					} else if (m1 == 3) {
+						currentScramble = currentScramble + " R2";
+					} else if (m1 == 4) {
+						currentScramble = currentScramble + " L2";
+					} else if (m1 == 5) {
+						currentScramble = currentScramble + " B2";
+						m1 = 6;
+					}
+					break;
+				case 6:
+					m1 = Math.floor(Math.random() * 5) + 1;
+					if (m1 == 1 && m2 < 4) {
+						currentScramble = currentScramble + " U";
+					} else if (m1 == 1 && m2 < 7 && m2 > 3) {
+						currentScramble = currentScramble + " U'";
+					} else if (m1 == 1 && m2 == 7) {
+						currentScramble = currentScramble + " U2";
+					} else if (m1 == 2 && m2 < 4) {
+						currentScramble = currentScramble + " D";
+					} else if (m1 == 2 && m2 < 7 && m2 > 3) {
+						currentScramble = currentScramble + " D'";
+					} else if (m1 == 2 && m2 == 7) {
+						currentScramble = currentScramble + " D2";
+					} else if (m1 == 3) {
+						currentScramble = currentScramble + " R2";
+					} else if (m1 == 4) {
+						currentScramble = currentScramble + " L2";
+					} else if (m1 == 5) {
+						currentScramble = currentScramble + " F2";
+					}
+					break;
+			}
+			len--;
+		}
+	} else if (temp == 2) {
+		
 };
 
 function scramble() {
@@ -232,86 +1093,107 @@ function scramble() {
 e222.onclick = function() {
 	currentEvent = 2;
 	scramble();
+	scrambleSelect.style.display = "none";
 };
 
 e333.onclick = function() {
 	currentEvent = 3;
 	scramble();
+	scrambleSelect.style.display = "none";
 };
 
 e444.onclick = function() {
 	currentEvent = 4;
 	scramble();
+	scrambleSelect.style.display = "none";
 };
 
 e555.onclick = function() {
 	currentEvent = 5;
 	scramble();
+	scrambleSelect.style.display = "none";
 };
 
 e666.onclick = function() {
 	currentEvent = 6;
 	scramble();
+	scrambleSelect.style.display = "none";
 };
 
 e777.onclick = function() {
 	currentEvent = 7;
 	scramble();
+	scrambleSelect.style.display = "none";
 };
 
 e3oh.onclick = function() {
 	currentEvent = 33;
 	scramble();
+	scrambleSelect.style.display = "none";
 };
 
 e3bld.onclick = function() {
 	currentEvent = 333;
 	scramble();
+	scrambleSelect.style.display = "none";
 };
 
 e3fm.onclick = function() {
 	currentEvent = 3333;
 	scramble();
+	scrambleSelect.style.display = "none";
 };
 
 e3mbld.onclick = function() {
 	currentEvent = 33333;
 	scramble();
+	scrambleSelect.style.display = "none";
 };
 
 epyra.onclick = function() {
 	currentEvent = 10;
 	scramble();
+	scrambleSelect.style.display = "none";
 };
 
 eskewb.onclick = function() {
 	currentEvent = 11;
 	scramble();
+	scrambleSelect.style.display = "none";
 };
 
 esq1.onclick = function() {
 	currentEvent = 12;
 	scramble();
+	scrambleSelect.style.display = "none";
 };
 
 emgmx.onclick = function() {
 	currentEvent = 13;
 	scramble();
+	scrambleSelect.style.display = "none";
 };
 
 eclock.onclick = function() {
 	currentEvent = 14;
 	scramble();
+	scrambleSelect.style.display = "none";
 };
 
 e4bld.onclick = function() {
 	currentEvent = 44;
 	scramble();
+	scrambleSelect.style.display = "none";
 };
 
 e5bld.onclick = function() {
 	currentEvent = 55;
 	scramble();
+	scrambleSelect.style.display = "none";
+};
+
+scrambleSelectBtn.onclick = function() {
+	scrambleSelect.style.display = "flex";
 };
 
 });
