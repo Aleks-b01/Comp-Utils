@@ -2536,7 +2536,7 @@ function scramble4() {
 	*/
 	len = Math.floor(Math.random() * 8) + 39;
 	m1 = Math.floor(Math.random() * 15) + 1;
-	m1 = Math.floor(Math.random() * 3) + 1;
+	m2 = Math.floor(Math.random() * 3) + 1;
 	
 };
 
