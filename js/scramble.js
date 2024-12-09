@@ -2537,7 +2537,78 @@ function scramble4() {
 	len = Math.floor(Math.random() * 8) + 39;
 	m1 = Math.floor(Math.random() * 15) + 1;
 	m2 = Math.floor(Math.random() * 3) + 1;
-	
+	if (m1 < 3 && m2 == 1) {
+		currentScramble = "U";
+	} else if (m1 < 3 && m2 == 2) {
+		currentScramble = "U'";
+	} else if (m1 < 3 && m2 == 3) {
+		currentScramble = "U2";
+	} else if ((m1 == 3 || m1 == 4) && m2 == 1) {
+		currentScramble = "D";
+	} else if ((m1 == 3 || m1 == 4) && m2 == 2) {
+		currentScramble = "D'";
+	} else if ((m1 == 3 || m1 == 4) && m2 == 3) {
+		currentScramble = "D2";
+	} else if ((m1 == 5 || m1 == 6) && m2 == 1) {
+		currentScramble = "R";
+	} else if ((m1 == 5 || m1 == 6) && m2 == 2) {
+		currentScramble = "R'";
+	} else if ((m1 == 5 || m1 == 6) && m2 == 3) {
+		currentScramble = "R2";
+	} else if ((m1 == 7 || m1 == 8) && m2 == 1) {
+		currentScramble = "L";
+	} else if ((m1 == 7 || m1 == 8) && m2 == 2) {
+		currentScramble = "L'";
+	} else if ((m1 == 7 || m1 == 8) && m2 == 3) {
+		currentScramble = "L2";
+	} else if ((m1 == 9 || m1 == 10) && m2 == 1) {
+		currentScramble = "F";
+	} else if ((m1 == 9 || m1 == 10) && m2 == 2) {
+		currentScramble = "F'";
+	} else if ((m1 == 9 && m1 == 10) && m2 == 3) {
+		currentScramble = "F2";
+	} else if ((m1 == 11 || m1 == 12) && m2 == 1) {
+		currentScramble = "B";
+	} else if ((m1 == 11 || m1 == 12) && m2 == 2) {
+		currentScramble = "B'";
+	} else if ((m1 == 11 || m1 == 12) && m2 == 3) {
+		currentSCramble = "B2";
+	} else if (m1 == 13 && m2 == 1) {
+		currentScramble = "Uw";
+	} else if (m1 == 13 && m2 == 2) {
+		currentScramble = "Uw'";
+	} else if (m1 == 13 && m2 == 3) {
+		currentScramble = "Uw2";
+	} else if (m1 == 14 && m2 == 1) {
+		currentScramble = "Rw";
+	} else if (m1 == 14 && m2 == 2) {
+		currentScramble = "Rw'";
+	} else if (m1 == 14 && m2 == 3) {
+		currentScramble = "Rw2";
+	} else if (m1 == 15 && m2 == 1) {
+		currentScramble = "Fw";
+	} else if (m1 == 15 && m2 == 2) {
+		currentScramble = "Fw'";
+	} else if (m1 == 15 && m2 == 3) {
+		currentScramble = "Fw2";
+	}
+	len--;
+	while (len > 0) {
+		m2 = Math.floor(Math.random() * 3) + 1;
+		switch (m1) {
+			case 1:
+			case 2:
+				m1 = Math.floor(Math.random() * 13) + 1;
+				if (m1 < 3 && m2 == 1) {
+					currentScramble = currentScramble + " D";
+					m1 = 3;
+				} else if (m1 < 3 && m2 == 2) {
+					currentScramble = currentScramble + " D'";
+					m1 = 3;
+				} else if (m1 < 3 && m2 == 3) {
+					currentScramble = currentScramble + " D2";
+					m1 = 3;
+				} else if ()
 };
 
 function scramble() {
