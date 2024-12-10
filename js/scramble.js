@@ -425,7 +425,9 @@ function scramble3() {
 		len--;
 	}
 	scrambleText.innerText = currentScramble;
-	/*
+};
+
+function scramble3DR() {
 	len = Math.floor(Math.random() * 2) + 8;
 	m1 = Math.floor(Math.random() * 6) + 1;
 	m2 = Math.floor(Math.random() * 7) + 1;
@@ -854,8 +856,9 @@ function scramble3() {
 		len--;
 	}
 	scrambleText.innerText = currentScramble;
-	*/
-	/*
+};
+
+function scramble3ADR() {
 	len = Math.floor(Math.random() * 2) + 8;
 	m1 = Math.floor(Math.random() * 6) + 1;
 	m2 = Math.floor(Math.random() * 3) + 1;
@@ -1649,11 +1652,9 @@ function scramble3() {
 		len--;
 	}
 	scrambleText.innerText = currentScramble;
-	*/
 };
 
 function scramble4() {
-	/*
 	len = Math.floor(Math.random() * 3) + 12;
 	m1 = Math.floor(Math.random() * 6) + 1;
 	m2 = Math.floor(Math.random() * 3) + 1;
@@ -2533,7 +2534,9 @@ function scramble4() {
 		len--;
 	}
 	scrambleText.innerText = currentScramble;
-	*/
+};
+
+function scramble4RM() {
 	len = Math.floor(Math.random() * 6) + 39;
 	m1 = Math.floor(Math.random() * 15) + 1;
 	m2 = Math.floor(Math.random() * 3) + 1;
@@ -3184,6 +3187,94 @@ function scramble4() {
 	scrambleText.innerText = currentScramble;
 };
 
+function scramble5() {
+	len = Math.floor(Math.random() * 6) + 59;
+	m1 = Math.floor(Math.random() * 12) + 1;
+	m2 = Math.floor(Math.random() * 3) + 1;
+	if (m1 == 1 && m2 == 1) {
+		currentScramble = "U";
+	} else if (m1 == 1 && m2 == 2) {
+		currentScramble = "U'";
+	} else if (m1 == 1 && m2 == 3) {
+		currentScramble = "U2";
+	} else if (m1 == 2 && m2 == 1) {
+		currentScramble = "D";
+	} else if (m1 == 2 && m2 == 2) {
+		currentScramble = "D'";
+	} else if (m1 == 2 && m2 == 3) {
+		currentScramble = "D2";
+	} else if (m1 == 3 && m2 == 1) {
+		currentScramble = "R";
+	} else if (m1 == 3 && m2 == 2) {
+		currentScramble = "R'";
+	} else if (m1 == 3 && m2 == 3) {
+		currentScramble = "R2";
+	} else if (m1 == 4 && m2 == 1) {
+		currentScramble = "L";
+	} else if (m1 == 4 && m2 == 2) {
+		currentScramble = "L'";
+	} else if (m1 == 4 && m2 == 3) {
+		currentScramble = "L2";
+	} else if (m1 == 5 && m2 == 1) {
+		currentScramble = "F";
+	} else if (m1 == 5 && m2 == 2) {
+		currentScramble = "F'";
+	} else if (m1 == 5 && m2 == 3) {
+		currentScramble = "F2";
+	} else if (m1 == 6 && m2 == 1) {
+		currentScramble = "B";
+	} else if (m1 == 6 && m2 == 2) {
+		currentScramble = "B'";
+	} else if (m1 == 6 && m2 == 3) {
+		currentScramble = "B2";
+	} else if (m1 == 7 && m2 == 1) {
+		currentScramble = "Uw";
+	} else if (m1 == 7 && m2 == 2) {
+		currentScramble = "Uw'";
+	} else if (m1 == 7 && m2 == 3) {
+		currentScramble = "Uw2";
+	} else if (m1 == 8 && m2 == 1) {
+		currentScramble = "Dw";
+	} else if (m1 == 8 && m2 == 2) {
+		currentScramble = "Dw'";
+	} else if (m1 == 8 && m2 == 3) {
+		currentScramble = "Dw2";
+	} else if (m1 == 9 && m2 == 1) {
+		currentScramble = "Rw";
+	} else if (m1 == 9 && m2 == 2) {
+		currentScramble = "Rw'";
+	} else if (m1 == 9 && m2 == 3) {
+		currentScramble = "Rw2";
+	} else if (m1 == 10 && m2 == 1) {
+		currentScramble = "Lw";
+	} else if (m1 == 10 && m2 == 2) {
+		currentScramble = "Lw'";
+	} else if (m1 == 10 && m2 == 3) {
+		currentScramble = "Lw2";
+	} else if (m1 == 11 && m2 == 1) {
+		currentScramble = "Fw";
+	} else if (m1 == 11 && m2 == 2) {
+		currentScramble = "Fw'";
+	} else if (m1 == 11 && m2 == 3) {
+		currentScramble = "Fw2";
+	} else if (m1 == 12 && m2 == 1) {
+		currentScramble = "Bw";
+	} else if (m1 == 12 && m2 == 2) {
+		currentScramble = "Bw'";
+	} else if (m1 == 12 && m2 == 3) {
+		currentScramble = "Bw2";
+	}
+	len--;
+	while (len > 0) {
+		m2 = Math.floor(Math.random() * 3) + 1;
+		switch (m1) {
+			case 1:
+				m1 = Math.floor(Math.random() * 11) + 1;
+				
+		}
+	}
+};
+
 function scramble() {
 	switch (currentEvent) {
 		case 2:
@@ -3205,7 +3296,7 @@ function scramble() {
 			scramble7();
 			break;
 		case 33:
-			scramble3OH();
+			scramble3();
 			break;
 		case 333:
 			scramble3BLD();
